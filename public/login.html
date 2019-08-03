@@ -3,15 +3,23 @@
 
 <head>
   <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="login.css">
 </head>
 
 <body>
-  <form action="login" method="POST">
-    Username: <input type="text" name="user" /> <br />
-    Password: <input type="text" name="pass" /> <br />
-    <input type="submit" value="login" />
-  </form>
-  <a href="signup.html">sign up</a>
+  <div id="container">
+    <p id="Instruction">
+      Sign in to continue to Checknotes
+    </p>
+    <form action="login" method="POST" id="loginform">
+      <input type="text" name="user" placeholder="Username" id="usernameinput"/> <br />
+      <input type="text" name="pass" placeholder="Password" id="passwordinput"/> <br />
+      <input type="submit" value="LOGIN" id="loginbutton"/>
+    </form>
+    <div id="siguptext">Don't have an account?
+    <a href="signup.html" id="signup">Sign Up</a>
+    </div>
+  </div>
 </body>
 
 </html>
