@@ -6,6 +6,7 @@ const cookieparser = require("cookie-parser")
 const mongoose = require("mongoose")
 const app = express()
 
+
 const {
 	User
 } = require("./user.js")
@@ -58,10 +59,10 @@ app.get("/signuppage", (req, res) => {
 	res.sendFile(__dirname + "/public/signup.html")
 })
 
-app.post("/login", urlencoder, (request, response) => {
+app.post("/login", urlencoder, (req, res) => {
 
-	let username = request.body.user;
-	let password = request.body.pass;
+	let username = req.body.user;
+	let password = req.body.pass;
 
 
 	User.findOne({
@@ -71,11 +72,12 @@ app.post("/login", urlencoder, (request, response) => {
 		if (err) {
 			res.send(err)
 		} else if (doc) {
-			console.log(doc)
-			request.session.username = username;
-			response.redirect("/");
+			console.log(doc);
+			req.session.username = username;
+			res.redirect("/");
 		} else {
-			res.send("User not found")
+			res.redirect("/")
+
 		}
 	})
 
@@ -158,7 +160,7 @@ app.post("/delete", urlencoder, (req, res) => {
 
 
 app.post("/preferences", urlencoder, (req, res) => {
-	let fs = req.body.fontsize;
+	let fs = req.body.fontsize
 	res.cookie("cookiefontsize", fs, {
 		maxAge: 1000 * 60 * 60 * 24 * 365
 	})
@@ -169,23 +171,45 @@ app.post("/preferences", urlencoder, (req, res) => {
 app.post("/signup", urlencoder, (req, res) => {
 	var username = req.body.user
 	var password = req.body.pass
+	var confirm_pw = req.body.confirm_pw;
 
-
-	let user = new User({
-		username,
-		password
-	})
-
-	user.save().then((doc) => {
-		/// if all goes well
-		console.log(doc)
-		res.render("home.hbs", {
-			username: doc.username
+	if(password === confirm_pw) {
+		let user = new User({
+			username,
+			password
 		})
-	}, (err) => {
-		// if nag fail
-		res.send(err)
-	})
+
+		user.save().then((doc) => {
+			/// if all goes well
+			console.log(doc)
+			res.render("home.hbs", {
+				username: doc.username
+			})
+		}, (err) => {
+			// if nag fail
+			res.send(err)
+		})
+	}else{
+		res.redirect("/signup")
+	}
+})
+
+app.post("/create_note", urlencoder, (req,res) =>{
+	let title = req.body.notetitle
+	let content = req.body.notecontent;
+})
+
+app.post("/create_checklist", urlencoder, (req,res) =>{
+	let title = req.body.cltitle;
+})
+
+app.get("/view_note", urlencoder, (req,res)=>{
+	var id = req.body.noteid;
+
+})
+
+app.get("/view_checklist",urlencoder, (req,res)=>{
+
 })
 
 app.listen(3000, function () {

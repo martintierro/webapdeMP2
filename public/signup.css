@@ -66,13 +66,13 @@ input{
 
     text-align: center;
 }
-#loginbutton:hover{
-    background-color: #f7c100;
+#signup:hover{
+    background-color: #fac400;
     box-shadow: 0 3px 6px  rgb(50, 50, 50, 0.25);
 
     transition-timing-function: ease;
 }
-#loginbutton:focus{
+#signup:focus{
     background-color: #ffca00;
     box-shadow: 0 3px 6px rgb(50, 50, 50, 0.25);
 
