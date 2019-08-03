@@ -1,0 +1,96 @@
+body{
+    display: flex;
+}
+
+#container{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: #efefef;
+    border-radius: 5px;
+    padding: 50px;
+    box-shadow: 0 3px 6px rgb(50, 50, 50, 0.25);
+}
+
+#signupform{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+input{
+    height: 40px;
+    padding-left: 15px;
+    width:250px;
+    font-family: Roboto,sans-serif;
+    border-radius: 10px;
+    border: 0;
+    margin-bottom: 5px;
+}
+
+#signup{
+    position: relative;
+    width:180px;
+    height:25px;
+    color:white;
+    margin: 0 auto;
+    background-color: #ffca00;
+
+    border: 0px;
+    border-radius: 5px;
+    font-family: Roboto,sans-serif;
+    font-weight: bold;
+}
+
+#siguptext{
+    margin: 0 auto 20px;
+    display: flex;
+    flex-direction: column;
+    font-family: Roboto,sans-serif;
+    font-size: small;
+}
+
+
+#Instruction{
+    position:relative;
+
+    top:14px;
+
+    font-family: Roboto,sans-serif;
+    font-size:10pt;
+
+    text-align: center;
+}
+#loginbutton:hover{
+    background-color: #f7c100;
+    box-shadow: 0 3px 6px  rgb(50, 50, 50, 0.25);
+
+    transition-timing-function: ease;
+}
+#loginbutton:focus{
+    background-color: #ffca00;
+    box-shadow: 0 3px 6px rgb(50, 50, 50, 0.25);
+
+    transition-timing-function: ease;
+}
+
+button:focus {
+    outline:none;
+}
+input:focus{
+    outline:none;
+}
+
+h1{
+    font-family: Roboto,sans-serif;
+    margin: 0 auto;
+    font-weight: lighter;
+}
+
+
+
