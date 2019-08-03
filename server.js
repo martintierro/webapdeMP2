@@ -158,7 +158,7 @@ app.post("/delete", urlencoder, (req, res) => {
 
 
 app.post("/preferences", urlencoder, (req, res) => {
-	let fs = req.body.fontsize
+	let fs = req.body.fontsize;
 	res.cookie("cookiefontsize", fs, {
 		maxAge: 1000 * 60 * 60 * 24 * 365
 	})
@@ -169,7 +169,6 @@ app.post("/preferences", urlencoder, (req, res) => {
 app.post("/signup", urlencoder, (req, res) => {
 	var username = req.body.user
 	var password = req.body.pass
-
 
 
 	let user = new User({
@@ -189,6 +188,6 @@ app.post("/signup", urlencoder, (req, res) => {
 	})
 })
 
-app.listen(9091, function () {
+app.listen(3000, function () {
 	console.log("port is live");
 });
