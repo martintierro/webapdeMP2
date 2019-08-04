@@ -195,8 +195,10 @@ app.post("/signup", urlencoder, (req, res) => {
 })
 
 app.post("/create_note", urlencoder, (req,res) =>{
-	let title = req.body.notetitle
-	let content = req.body.notecontent;
+	let title = req.body.note_title;
+	let content = req.body.note_content;
+
+
 })
 
 app.post("/create_checklist", urlencoder, (req,res) =>{
@@ -204,7 +206,7 @@ app.post("/create_checklist", urlencoder, (req,res) =>{
 })
 
 app.get("/view_note", urlencoder, (req,res)=>{
-	var id = req.body.noteid;
+	let id = req.body.noteid;
 
 })
 

@@ -384,6 +384,7 @@
                 $(content).val($("#createpostTitle").val());
                 content.textContent=$("#createpostTitle").val();
                 content.className = "post_content";
+                content.name = "note_content";
 
 
                 /*spanItem = document.createElement("span");
@@ -395,6 +396,7 @@
                 title.type = "text";
                 $(title).attr("placeholder", "Title");
                 title.className = "post_title";
+                title.name = "note_title";
 
                 save = document.createElement("input");
                 save.type = "submit";
