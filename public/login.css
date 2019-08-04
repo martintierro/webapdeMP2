@@ -45,6 +45,10 @@ input{
     border-radius: 5px;
     font-family: Roboto,sans-serif;
     font-weight: bold;
+
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function:ease;
 }
 
 #siguptext{
@@ -80,13 +84,11 @@ a{
     background-color: #fac400;
     box-shadow: 0 3px 6px  rgb(50, 50, 50, 0.25);
 
-    transition-timing-function: ease;
 }
 #loginbutton:focus{
     background-color: #ffca00;
     box-shadow: 0 3px 6px rgb(50, 50, 50, 0.25);
-
-    transition-timing-function: ease;
+    border: rgba(61, 61, 61, 0.6) solid;
 }
 
 button:focus {
