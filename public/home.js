@@ -44,12 +44,6 @@ $(document).ready(function(){
         content.className = "post_content";
         content.name = "note_content";
 
-
-        /*spanItem = document.createElement("span");
-        $(spanItem).text($("#createpostTitle").val());
-        spanItem.textContent=$("#createpostTitle").val();
-        $(spanItem).attr("placeholder", "Title");*/
-
         title = document.createElement("input");
         title.type = "text";
         $(title).attr("placeholder", "Title");
@@ -130,13 +124,9 @@ $(document).ready(function(){
         note_form.append(add);
         note_form.append(save);
 
-
-
-
         $(note_form).hide();
         $("#newpost").append(note_form);
         $(note_form).show();
-
     }
 
     $("#editNote").click(function(){
@@ -148,7 +138,7 @@ $(document).ready(function(){
         document.getElementById("overlay_edit").style.display = "block";
     }
 
-    $("#background").click(off);
+    $("#background_edit").click(off_edit);
     function off_edit() {
         document.getElementById("overlay_edit").style.display = "none";
     }
@@ -156,9 +146,36 @@ $(document).ready(function(){
     function loadNote(){
         content = document.createElement("textarea");
         $(content).attr("placeholder", "Enter something...");
-        $(content).val($("#noteContent").val());
-        content.textContent=$("#noteContent").val();
+        $(content).val($("#noteContent").text());
+        content.textContent=$("#noteContent").text();
         content.className = "post_content";
         content.name = "note_content";
+
+        title = document.createElement("input");
+        title.type = "text";
+        $(title).attr("placeholder", "Title");
+        $(title).val($("#noteTitle").text());
+        title.textContent=$("#noteTitle").text();
+        title.className = "post_title";
+        title.name = "note_title";
+
+        console.log($("#noteTitle").text());
+
+        save = document.createElement("input");
+        save.type = "submit";
+        save.value = "SAVE";
+        save.id = "savebutton";
+
+        note_form = document.createElement("form");
+        note_form.action = "create_note";
+        note_form.method = "POST";
+        note_form.id = "noteform";
+        note_form.append(title);
+        note_form.append(content);
+        note_form.append(save);
+
+        $(note_form).hide();
+        $("#editpost").append(note_form);
+        $(note_form).show();
     }
 });
