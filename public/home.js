@@ -109,9 +109,8 @@ $(document).ready(function(){
         let add = document.createElement("div");
         add.innerHTML = "ADD";
         add.className = "add";
-
         $(add).click(function() {
-            $(divCtnr).clone(true).insertBefore(divCtnr);
+            $("form > div:first-child").clone(true).insertBefore("form > div:last-child");
             $(item_input).val("");
             item_input.textContent="";
             return false;
@@ -121,14 +120,20 @@ $(document).ready(function(){
             $(this).parent().remove();
         });
 
+        let footer = document.createElement("div");
+        footer.append(add);
+        footer.append(save);
+
         note_form = document.createElement("form");
         note_form.action = "create_list";
         note_form.method = "POST";
         note_form.id = "noteform";
         note_form.append(title);
         note_form.append(divCtnr);
-        note_form.append(add);
-        note_form.append(save);
+        note_form.append(footer)
+
+
+
 
 
 
