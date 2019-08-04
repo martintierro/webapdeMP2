@@ -245,6 +245,7 @@ html, body {
 input:focus{
     outline:none;
 }
+
 textarea:focus{
     outline:none;
 }
@@ -329,8 +330,6 @@ textarea:focus{
     margin: 3px;
 }
 
-
-
 .remove{
     float: right;
     margin-right: 10px;
@@ -371,7 +370,7 @@ textarea:focus{
     color: rgb(0, 0, 0,0.87);
 }
 
-.noteDiv{
+#noteDiv{
     position: relative;
     top: 10%;
     left: 5%;
@@ -385,7 +384,7 @@ textarea:focus{
     border-radius: 15px;
 }
 
-.noteTitle{
+#noteTitle{
     font-size: 12pt;
     font-weight: 500;
 }
@@ -511,4 +510,32 @@ textarea:focus{
     z-index: 2;
     cursor: pointer;
     background-color: rgba(248, 252, 230, 0.315);
+}
+
+#background_edit{
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(248, 252, 230, 0.315);
+    z-index: 2;
+    cursor: pointer;
+}
+
+#editpost{
+    z-index: 3;
+    position: relative;
+    width: 25%;
+    height: 60%;
+
+    margin: auto;
+    top: 15%;
+    background-color: rgb(255, 245, 145);
+
+    border-radius: 15px;
+
 }
