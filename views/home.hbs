@@ -148,7 +148,7 @@
             left: 28%;
 
             height: 9%;
-            width: 50%;
+            width: 600px;
 
             display: flex;
             flex-direction: row;
@@ -170,7 +170,16 @@
 
         .createpostButton{
             position: relative;
-            left: -10%;
+            top: 25%;
+            left: -13%;
+            background: transparent;
+            border: rgb(255,202,0, .60) solid;
+            border-radius: 5px;
+            font-family: Roboto, sans-serif;
+            max-font-size: 10pt;
+            color:rgb(255,202,0);
+            font-weight:500;
+            height: 30px;
         }
 
         #overlay {
@@ -209,30 +218,43 @@
 
             margin: auto;
             top: 15%;
-            background-color: rgb(253, 180, 229);
+            background-color: rgb(255, 245, 145);
 
             border-radius: 5px;
 
         }
 
+        input:focus{
+            outline:none;
+        }
+        textarea:focus{
+            outline:none;
+        }
+
         .post_title_container{
-            position: relative;
+
             /*top: 3%;
             left: 5%;*/
-            padding: 10px 0 20px 15px;
 
-            width: 87%;
             /*background-color: red;*/
             background-color: rgba(255, 255, 255, 0);
 
-            font-family: Roboto;
-            font-size: 14pt;
-            font-weight:500;
+
         }
 
         .post_title{
             background-color: rgba(255, 255, 255, 0);
             border: 0px;
+            font-family: Roboto, sans-serif;
+            font-size: 14pt;
+            font-weight:500;
+            padding: 10px 0 20px 15px;
+            width: 87%;
+            position: relative;
+        }
+
+        #noteform{
+            height: 100%;
         }
 
         .post_content{
@@ -244,14 +266,29 @@
             height: 70%;
 
             background-color: rgba(255, 255, 255, 0);
-            border: 0px;
-            font-family: Roboto;
+            border: 0;
+            font-family: Roboto, sans-serif;
             font-size: 10pt;
         }
 
         .post_container{
             height: 100%;
         }
+
+        #savebutton{
+            float: right;
+            margin-right: 10px;
+            margin-top: 10px;
+            background: transparent;
+            border: rgba(0, 0, 0, 0.6) solid;
+            border-radius: 5px;
+            font-family: Roboto, sans-serif;
+            max-font-size: 10pt;
+            color: rgb(0, 0, 0);
+            font-weight:500;
+            height: 30px;
+        }
+
     </style>
 </head>
 
@@ -290,9 +327,9 @@
             </form>
         </div>-->
 
-        <form class="createpostForm">
+        <form class="createpostForm" method="post" action="create_post">
             <input id="createpostTitle" type="text" placeholder="Create a note or checklist...">
-            <input class="createpostButton" type="button" value="Create">
+            <input class="createpostButton" type="button" value="CREATE" >
         </form>
 
     </div>
@@ -312,7 +349,7 @@
 
         let header = document.getElementById("HeaderDiv");
         let sticky = header.offsetTop;
-        let divItem, divCtnr, content, title;
+        let divItem, divCtnr, content, title, note_form;
 
         function stickyFunction() {
             if (window.pageYOffset > sticky) {
@@ -324,7 +361,7 @@
 
         $(document).ready(function(){
             $(".createpostButton").click(function(){
-                set();
+                show_input();
                 on();
             });
 
@@ -337,10 +374,17 @@
                 document.getElementById("overlay").style.display = "none";
             }
 
-            function set(){
+            function show_input(){
+                $("#newpost").empty();
+
+
+
                 content = document.createElement("textarea");
                 $(content).attr("placeholder", "Enter something...");
+                $(content).val($("#createpostTitle").val());
+                content.textContent=$("#createpostTitle").val();
                 content.className = "post_content";
+
 
                 /*spanItem = document.createElement("span");
                 $(spanItem).text($("#createpostTitle").val());
@@ -350,22 +394,26 @@
                 title = document.createElement("input");
                 title.type = "text";
                 $(title).attr("placeholder", "Title");
-                $(title).val($("#createpostTitle").val());
-                title.textContent=$("#createpostTitle").val();
                 title.className = "post_title";
 
-                divItem = document.createElement("div");
-                divItem.append(title);
-                divItem.className = "post_title_container";
+                save = document.createElement("input");
+                save.type = "submit";
+                save.value = "SAVE";
+                save.id = "savebutton"
 
-                divCtnr = document.createElement("div");
-                divCtnr.append(divItem);
-                divCtnr.append(content);
-                divCtnr.className = "post_container"
+                note_form = document.createElement("form");
+                note_form.action = "create_note";
+                note_form.method = "POST";
+                note_form.id = "noteform";
+                note_form.append(title);
+                note_form.append(content);
+                note_form.append(save);
 
-                $(divCtnr).hide();
-                $("#newpost").append(divCtnr);
-                $(divCtnr).show(500);
+
+                $(note_form).hide();
+                $("#newpost").append(note_form);
+                $(note_form).show();
+
             }
         });
     </script>
