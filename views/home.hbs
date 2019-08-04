@@ -3,6 +3,11 @@
 
 <head>
     <script src="jquery.min.js"> </script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+            crossorigin="anonymous">
+
+    </script>
     <style>
         body{
             background-color:white;
@@ -321,16 +326,59 @@
             background-color: rgb(189, 189, 189);
         }
 
-        #iteminput{
-            width: 95%;
+        .iteminput{
+            width: 75%;
             height: 9%;
             padding-left: 5%;
 
             border:0;
-            border-top: rgba(0, 0, 0, 0.3) solid;
-            border-bottom: rgba(0, 0, 0, 0.3) solid;
 
             background-color: transparent;
+        }
+
+        .item_container{
+            width: 100%;
+            margin: 3px;
+        }
+
+
+
+        .remove{
+            background: transparent;
+            border-radius: 5px;
+            font-family: Roboto, sans-serif;
+            font-size: 10pt;
+            color: rgb(0, 0, 0, 0.6);
+            font-weight:500;
+            height: 6%;
+            transition-property: all;
+            transition-duration: 0.5s;
+            transition-timing-function:ease;
+            padding: 1px;
+        }
+
+        .remove:hover{
+            color: rgb(0, 0, 0, 0.87);
+        }
+
+        .add{
+            float: left;
+            margin-left: 10px;
+            margin-top: 10px;
+            background: transparent;
+            border-radius: 5px;
+            font-family: Roboto, sans-serif;
+            max-font-size: 8pt;
+            color: rgb(0, 0, 0,0.6);
+            font-weight:500;
+            padding: 5px;
+            transition-property: all;
+            transition-duration: 0.5s;
+            transition-timing-function:ease;
+        }
+
+        .add:hover{
+            color: rgb(0, 0, 0,0.87);
         }
 
 
@@ -490,6 +538,8 @@
                 on();
             })
 
+
+
             function on() {
                 document.getElementById("overlay").style.display = "block";
             }
@@ -536,7 +586,6 @@
                 note_form.append(content);
                 note_form.append(save);
 
-
                 $(note_form).hide();
                 $("#newpost").append(note_form);
                 $(note_form).show();
@@ -554,19 +603,48 @@
                 title.name = "list_title";
 
                 divCtnr = document.createElement("div");
+                divCtnr.className ="item_container";
+
                 item_input = document.createElement("input");
                 item_input.type ="text";
-                $(item_input).attr("placeholder","Add item...");
-                item_input.id = "iteminput";
+                $(item_input).attr("placeholder","List Item");
+                item_input.className = "iteminput";
+
+                let remove = document.createElement("span");
+                remove.innerHTML ="REMOVE";
+                remove.className = "remove";
+
+                divCtnr.append(item_input);
+                divCtnr.append(remove);
+
+                save = document.createElement("input");
+                save.type = "submit";
+                save.value = "SAVE";
+                save.id = "savebutton";
 
 
+                let add = document.createElement("div");
+                add.innerHTML = "ADD";
+                add.className = "add";
+
+                $(add).click(function() {
+                    $(divCtnr).clone(true).insertBefore(divCtnr);
+                    $(item_input).val("");
+                    item_input.textContent="";
+                    return false;
+                });
+
+                $(remove).click(function() {
+                    $(this).parent().remove();
+                });
 
                 note_form = document.createElement("form");
                 note_form.action = "create_list";
                 note_form.method = "POST";
                 note_form.id = "noteform";
                 note_form.append(title);
-                note_form.append(item_input);
+                note_form.append(divCtnr);
+                note_form.append(add);
                 note_form.append(save);
 
 
