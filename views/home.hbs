@@ -321,6 +321,18 @@
             background-color: rgb(189, 189, 189);
         }
 
+        #iteminput{
+            width: 95%;
+            height: 9%;
+            padding-left: 5%;
+
+            border:0;
+            border-top: rgba(0, 0, 0, 0.3) solid;
+            border-bottom: rgba(0, 0, 0, 0.3) solid;
+
+            background-color: transparent;
+        }
+
 
         .noteDiv{
             position: relative;
@@ -457,7 +469,7 @@
 
         let header = document.getElementById("HeaderDiv");
         let sticky = header.offsetTop;
-        let divItem, divCtnr, content, title, note_form;
+        let divItem, divCtnr, content, title, note_form, item_input, checkbox, deletebox;
 
         function stickyFunction() {
             if (window.pageYOffset > sticky) {
@@ -541,7 +553,28 @@
                 title.className = "post_title";
                 title.name = "list_title";
 
+                divCtnr = document.createElement("div");
+                item_input = document.createElement("input");
+                item_input.type ="text";
+                $(item_input).attr("placeholder","Add item...");
+                item_input.id = "iteminput";
 
+
+
+                note_form = document.createElement("form");
+                note_form.action = "create_list";
+                note_form.method = "POST";
+                note_form.id = "noteform";
+                note_form.append(title);
+                note_form.append(item_input);
+                note_form.append(save);
+
+
+
+
+                $(note_form).hide();
+                $("#newpost").append(note_form);
+                $(note_form).show();
             }
         });
     </script>
