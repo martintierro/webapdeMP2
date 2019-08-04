@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Document</title>
+    <script src="jquery.min.js"> </script>
     <style>
         body{
             background-color:white;
@@ -154,7 +154,7 @@
             flex-direction: row;
         }
 
-        .createpostTitle{
+        #createpostTitle{
             position: relative;
             left: 0px;
 
@@ -182,9 +182,75 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0,0,0,0.5);
+            /*background-color: rgba(248, 252, 230, 0.315);*/
             z-index: 2;
             cursor: pointer;
+        }
+
+        #background{
+            position: fixed;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0; 
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(248, 252, 230, 0.315);
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        #newpost{
+            z-index: 3;
+            position: relative;
+            width: 25%;
+            height: 60%;
+
+            margin: auto;
+            top: 15%;
+            background-color: rgb(253, 180, 229);
+
+            border-radius: 5px;
+
+        }
+
+        .post_title_container{
+            position: relative;
+            /*top: 3%;
+            left: 5%;*/
+            padding: 10px 0 20px 15px;
+
+            width: 87%;
+            /*background-color: red;*/
+            background-color: rgba(255, 255, 255, 0);
+
+            font-family: Roboto;
+            font-size: 14pt;
+            font-weight:500;
+        }
+
+        .post_title{
+            background-color: rgba(255, 255, 255, 0);
+            border: 0px;
+        }
+
+        .post_content{
+            position: relative;
+            top: 0;
+            left: 5%;
+
+            width: 88%;
+            height: 70%;
+
+            background-color: rgba(255, 255, 255, 0);
+            border: 0px;
+            font-family: Roboto;
+            font-size: 10pt;
+        }
+
+        .post_container{
+            height: 100%;
         }
     </style>
 </head>
@@ -225,7 +291,7 @@
         </div>-->
 
         <form class="createpostForm">
-            <input class="createpostTitle" type="text" placeholder="Create a note or checklist...">
+            <input id="createpostTitle" type="text" placeholder="Create a note or checklist...">
             <input class="createpostButton" type="button" value="Create">
         </form>
 
@@ -233,7 +299,12 @@
 
     <!--Overlay-->
     <div id="overlay">
-        Poo
+        <div id="background"></div>
+        <div id="newpost">
+            <form class="postcontentForm">
+                <!--<input id="postcontent" type="text" placeholder="Enter something...">-->
+            </form>
+        </div>
     </div>
 
     <script>
@@ -241,6 +312,7 @@
 
         let header = document.getElementById("HeaderDiv");
         let sticky = header.offsetTop;
+        let divItem, divCtnr, content, title;
 
         function stickyFunction() {
             if (window.pageYOffset > sticky) {
@@ -250,15 +322,52 @@
             }
         }
 
-        
+        $(document).ready(function(){
+            $(".createpostButton").click(function(){
+                set();
+                on();
+            });
 
-        function on() {
-            document.getElementById("overlay").style.display = "block";
-        }
+            function on() {
+                document.getElementById("overlay").style.display = "block";
+            }
 
-        function off() {
-            document.getElementById("overlay").style.display = "none";
-        }
+            $("#background").click(off);
+            function off() {
+                document.getElementById("overlay").style.display = "none";
+            }
+
+            function set(){
+                content = document.createElement("textarea");
+                $(content).attr("placeholder", "Enter something...");
+                content.className = "post_content";
+
+                /*spanItem = document.createElement("span");
+                $(spanItem).text($("#createpostTitle").val());
+                spanItem.textContent=$("#createpostTitle").val();
+                $(spanItem).attr("placeholder", "Title");*/
+
+                title = document.createElement("input");
+                title.type = "text";
+                $(title).attr("placeholder", "Title");
+                $(title).val($("#createpostTitle").val());
+                title.textContent=$("#createpostTitle").val();
+                title.className = "post_title";
+
+                divItem = document.createElement("div");
+                divItem.append(title);
+                divItem.className = "post_title_container";
+
+                divCtnr = document.createElement("div");
+                divCtnr.append(divItem);
+                divCtnr.append(content);
+                divCtnr.className = "post_container"
+
+                $(divCtnr).hide();
+                $("#newpost").append(divCtnr);
+                $(divCtnr).show(500);
+            }
+        });
     </script>
 </body>
 
