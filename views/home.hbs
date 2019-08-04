@@ -220,7 +220,7 @@
             top: 15%;
             background-color: rgb(255, 245, 145);
 
-            border-radius: 5px;
+            border-radius: 15px;
 
         }
 
@@ -232,7 +232,6 @@
         }
 
         .post_title_container{
-
             /*top: 3%;
             left: 5%;*/
 
@@ -289,14 +288,13 @@
             height: 30px;
         }
 
-
         .noteDiv{
             position: relative;
             top: 10%;
             left: 5%;
 
             height: 45%;
-            width: 30%;
+            width: 25%;
 
             background-color:rgb(255, 226, 61);
             padding: 5px 20px 5px 20px;
@@ -309,7 +307,7 @@
             font-weight: 500;
         }
 
-        .noteContent{
+        #noteContent{
             height: 67%;
             width: 100%;
 
@@ -353,6 +351,84 @@
             background: white;
         }*/
 
+        .checklistDiv{
+            position: relative;
+            top: -37%;
+            left: 37%;
+
+            height: 45%;
+            width: 25%;
+
+            background-color:rgb(255, 173, 230);
+            padding: 5px 20px 5px 20px;
+
+            border-radius: 15px;
+        }
+
+        .checklistTitle{
+            font-size: 12pt;
+            font-weight: 500;
+        }
+
+        .checklistContent{
+            height: 66%;
+            width: 100%;
+
+            font-size: 10pt;
+            
+            display: -webkit-box;
+            -webkit-line-clamp: 7;
+            -webkit-box-orient:vertical;
+            /*white-space: nowrap;*/
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .checklistItem{
+            display: inline-block;
+            padding-left: 1.7em;
+            text-indent: -1.7em;
+        }
+
+        #editNote{
+            position: relative;
+            top:-215px;
+            left: 87%;
+
+            background-color:rgba(240, 230, 140, 0);
+            border: 0px;
+        }
+
+        #editNote:hover{
+            color: rgb(255, 136, 0);
+        }
+
+        #editCheckList{
+            position: relative;
+            top:-202px;
+            left: 87%;
+
+            background-color:rgba(240, 230, 140, 0);
+            border: 0px;
+        }
+
+        #editCheckList:hover{
+            color: rgb(255, 0, 64);
+        }
+
+        #overlay_edit{
+            position: fixed;
+            display: none;
+            width: 100%;
+            height: 100%;
+            top: 0; 
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+            cursor: pointer;
+            background-color: rgba(248, 252, 230, 0.315);
+        }
     </style>
 </head>
 
@@ -398,14 +474,28 @@
 
         <div class="noteDiv">
             <p class="noteTitle">Restaurants to Try</p>
-            <p class="noteContent overflow">Oficina do Duque<br>Calcada do Duque 43 A 1200-155, Lisbon 1200-155, Portugal<br>
+            <p id="noteContent">Oficina do Duque<br>Calcada do Duque 43 A 1200-155, Lisbon 1200-155, Portugal<br>
                                     PP-PPP Mediterranean, European, Portuguese<br>4.5<br>3 min Walk<br><br>Boa-Bao<br>
                                     Largo Raphael Bordalo Pinheiro Chiado, Lisbon 1200-369, Portugal<br>
                                     PP-PPP Asian Thai, Vietnames<br>4.5<br>3 min Walk</p>
+
+            <input id="editNote" type="button" value="EDIT">
         </div>
 
         <div class="checklistDiv">
+            <p class="checklistTitle">Upcoming Schoolwork</p>
+            <form class="checklistContent">
+                <label class="checklistItem"><input type="checkbox">HCIFACE DJ4 - August 5</label><br>
+                <label class="checklistItem"><input type="checkbox">WEBAPDE Phase 2 - August 6</label><br>
+                <label class="checklistItem"><input type="checkbox">INTR-OS miniP2 - August 7</label><br>
+                <label class="checklistItem"><input type="checkbox">AUTOMAT Problem Set 4 - August 8</label><br>
+                <label class="checklistItem"><input type="checkbox">WEBPAPDE Mini Challenge 5 - August 8</label><br>
+                <label class="checklistItem"><input type="checkbox">INTR-OS Exam - August 9</label><br>
+                <label class="checklistItem"><input type="checkbox">HCIFACE Exam - August 9</label><br>
+                <label class="checklistItem"><input type="checkbox">SOCTEC2 Presentation - August 9</label><br>
+            </form>
 
+            <input id="editCheckList" type="button" value="EDIT">
         </div>
     </div>
 
@@ -415,6 +505,14 @@
         <div id="newpost">
             <form class="postcontentForm">
                 <!--<input id="postcontent" type="text" placeholder="Enter something...">-->
+            </form>
+        </div>
+    </div>
+
+    <div id="overlay_edit">
+        <div id="background_edit"></div>
+        <div id="editpost">
+            <form class="postcontentForm">
             </form>
         </div>
     </div>
@@ -451,8 +549,6 @@
 
             function show_input(){
                 $("#newpost").empty();
-
-
 
                 content = document.createElement("textarea");
                 $(content).attr("placeholder", "Enter something...");
@@ -491,6 +587,29 @@
                 $("#newpost").append(note_form);
                 $(note_form).show();
 
+            }
+
+            $("#editNote").click(function(){
+                loadNote();
+                on_edit();
+            });
+
+            function on_edit() {
+                document.getElementById("overlay_edit").style.display = "block";
+            }
+
+            $("#background").click(off);
+            function off_edit() {
+                document.getElementById("overlay_edit").style.display = "none";
+            }
+
+            function loadNote(){
+                content = document.createElement("textarea");
+                $(content).attr("placeholder", "Enter something...");
+                $(content).val($("#noteContent").val());
+                content.textContent=$("#noteContent").val();
+                content.className = "post_content";
+                content.name = "note_content";
             }
         });
     </script>
