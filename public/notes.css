@@ -176,9 +176,9 @@ html, body {
 
 .tagheader{
     position: relative;
-    top: -5px;
-    height: 8%;
-    padding: 18px 8px 0px 15px;
+    top: -1px;
+    height: 5%;
+    padding: 20px 8px 1px 15px;
     letter-spacing: .07272727em;
     text-decoration: none;
     font-size: .6875rem;
@@ -200,7 +200,7 @@ html, body {
     font-size: 10pt;
     color:rgb(255,202,0);
     font-weight:500;
-    height: 50%;
+    height: 78%;
     transition-property: all;
     transition-duration: 0.5s;
     transition-timing-function:ease;
