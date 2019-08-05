@@ -65,6 +65,16 @@ $(document).ready(function(){
     function note_input(){
         $("#newpost").empty();
 
+        let noteAddTag = document.createElement("input");
+        noteAddTag.type = "button";
+        $(noteAddTag).val("ADD");
+        noteAddTag.textContent = "ADD";
+        noteAddTag.className = "tagButtonN";
+
+        tagContainer = document.createElement("div");
+        tagContainer.append(noteAddTag);
+        tagContainer.className = "tagContainerN";
+
         content = document.createElement("textarea");
         $(content).attr("placeholder", "Enter something...");
         $(content).val($("#postinput").val());
@@ -143,6 +153,7 @@ $(document).ready(function(){
         note_form.method = "POST";
         note_form.id = "noteform";
         note_form.append(title);
+        note_form.append(tagContainer);
         note_form.append(content);
         note_form.append(footer);
 
@@ -322,8 +333,8 @@ $(document).ready(function(){
 
         let noteAddTag = document.createElement("input");
         noteAddTag.type = "button";
-        $(noteAddTag).val("Add Tag");
-        noteAddTag.textContent = "Add Tag";
+        $(noteAddTag).val("ADD");
+        noteAddTag.textContent = "ADD";
         noteAddTag.className = "tagButtonN";
 
         noteTag = document.createElement("span");
@@ -415,6 +426,22 @@ $(document).ready(function(){
 
         let parent = $(button).parent().parent();
 
+        let checklistAddTag = document.createElement("input");
+        checklistAddTag.type = "button";
+        $(checklistAddTag).val("ADD");
+        checklistAddTag.textContent = "ADD";
+        checklistAddTag.className = "tagButtonCL";
+
+        checklistTag = document.createElement("span");
+        $(checklistTag).val($("#checklistTag").text());
+        checklistTag.textContent = $("#checklistTag").text();
+        checklistTag.className = "tagCL";
+
+        tagContainer = document.createElement("div");
+        tagContainer.append(checklistTag);
+        tagContainer.append(checklistAddTag);
+        tagContainer.className = "tagContainerCL";
+
         title = document.createElement("input");
         title.type = "text";
         $(title).attr("placeholder", "Title");
@@ -428,6 +455,7 @@ $(document).ready(function(){
         note_form.method = "GET";
         note_form.id = "noteform";
         note_form.append(title);
+        note_form.append(tagContainer);
 
         let myControls = parent.find(".checklistContent").find('label.checklistItem');
         let checkboxes = parent.find(".checklistContent").find("input");
