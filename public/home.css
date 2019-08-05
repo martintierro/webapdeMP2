@@ -81,6 +81,7 @@ html, body {
 
 .name{
     position: relative;
+    top:5px;
     font-family: Roboto, sans-serif;
     vertical-align: center;
 }

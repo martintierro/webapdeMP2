@@ -179,12 +179,15 @@ app.post("/create_checklist", urlencoder, (req,res) =>{
 
 app.get("/view_note", urlencoder, (req,res)=>{
 	let id = req.body.noteid;
+	Content.findById(id).then((result)=>{
+		//TODO: Render note
+	})
 })
 
 app.get("/view_checklist",urlencoder, (req,res)=>{
 	let id = req.body.noteid;
 	Content.findById(id).then((result)=>{
-		console.log(result.title)
+		//TODO: Render checklist
 	})
 })
 
@@ -211,18 +214,54 @@ app.post("/edit_checklist", urlencoder, (req, res)=>{
 })
 
 app.post("/add_tag", urlencoder, (req, res)=>{
-	let id = req.body.noteid;
-	//let tag = req.body.tag;	IDK HOW IN HBS
+	let id = req.body.note;
+	let tags = req.body.tags;
 
 
-	Content.findByIdAndUpdate(id, {/*tag*/}).then((result)=>{
+	Content.findByIdAndUpdate(id, {tags}).then((result)=>{
+			res.render("home.hbs", {
+				username: doc.username,
+				//TODO: INSERT HOW TO ADD TAGS AT THE SIDE
+				tags:result
+			})
+	})
+})
+
+app.post("/remove_tag", urlencoder, (req,res)=>{
+	let id = req.body.note;
+	let tags = req.body.tags;
+
+	Content.findByIdAndUpdate(id, {tags}).then((result)=>{
 		res.render("home.hbs", {
 			username: doc.username,
-			//INSERT HOW TO ADD TAGS AT THE SIDE
 			tags:result
 		})
 	})
 })
+
+app.post("/edit_tag", urlencoder, (req,res)=>{
+	let id = req.body.tag;
+
+	Content.findByIdAndUpdate(id, {tags}).then((result)=>{
+		res.render("home.hbs", {
+			username: doc.username,
+			tags:result
+		})
+	})
+})
+
+app.post("/delete_note", urlencoder, (req,res)=>{
+	let id = req.body.noteid;
+
+	Content.findByIdAndDelete(id).then((result)=>{
+		res.render("home.hbs", {
+			username: doc.username,
+			//INSERT HOW TO ADD TAGS AT THE SIDE
+			notes:result
+		})
+	})
+})
+
 
 app.get("/home", urlencoder, (req,res)=>{
 	res.render("home.hbs");
@@ -230,28 +269,32 @@ app.get("/home", urlencoder, (req,res)=>{
 
 app.get("/notes", urlencoder, (req,res)=>{
 
-	//get all notes
+	//TODO: get all notes
 	res.render("notes.hbs");
 })
 
 app.get("/checklists", urlencoder, (req,res)=>{
 
-	//get all checklists
+	//TODO: get all checklists
 	res.render("checklists.hbs");
 })
 
 app.get("/search", urlencoder, (req, res)=>{
 	let search_query = req.body.search_input;
 
-	//return search results
+	//TODO: return search results
 	res.render("home.hbs")
 })
 
 app.post("/uploadimage", urlencoder, (req, res)=>{
 	//let image = req.body.image;
+
+	//TODO add image to note
+
+	res.render("home.hbs")
 })
 
-app.get("/tag/#",urlencoder,(req,res)=>{
+app.get("/tag/",urlencoder,(req,res)=>{
 	let tag = req.body.tag;
 	Content.findById()
 	Content.findById(id, {tag}).then((result)=>{
