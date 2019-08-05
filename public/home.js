@@ -165,6 +165,17 @@ $(document).ready(function(){
 
     function list_input() {
         $("#editCL").empty();
+
+        let checklistAddTag = document.createElement("input");
+        checklistAddTag.type = "button";
+        $(checklistAddTag).val("ADD");
+        checklistAddTag.textContent = "ADD";
+        checklistAddTag.className = "tagButtonCL";
+
+        tagContainer = document.createElement("div");
+        tagContainer.append(checklistAddTag);
+        tagContainer.className = "tagContainerCL";
+
         title = document.createElement("input");
         title.type = "text";
         $(title).attr("placeholder", "Title");
@@ -304,6 +315,7 @@ $(document).ready(function(){
         note_form.method = "POST";
         note_form.id = "noteform";
         note_form.append(title);
+        note_form.append(tagContainer);
         note_form.append(divCtnr);
         note_form.append(footer);
 
@@ -334,6 +346,12 @@ $(document).ready(function(){
         $(noteAddTag).val("ADD");
         noteAddTag.textContent = "ADD";
         noteAddTag.className = "tagButtonN";
+
+        $(noteAddTag).click(function(){
+            let dropdownItem = document.createElement("div");
+            $(dropdownItem).val($("#tag").val());
+            noteAddTag.append(dropdownItem);
+        })
 
         noteTag = document.createElement("span");
         $(noteTag).val($("#noteTag").text());
