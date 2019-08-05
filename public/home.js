@@ -343,47 +343,50 @@ $(document).ready(function(){
     function loadNote(button){
         $("#editpost").empty();
 
-        let noteAddTag = document.createElement("input");
-        noteAddTag.type = "button";
-        $(noteAddTag).val("ADD");
-        noteAddTag.textContent = "ADD";
-        noteAddTag.className = "tagButtonN";
-
-        
-
-        $(noteAddTag).click(function(){
-            let dropdownItem = document.createElement("div");
-            $(dropdownItem).val($("#tag").val());
-            dropdownItem.textContent = $("#tag").val();
-            dropdownItem.id = "dropdownItem";
-            tagContainer.append(dropdownItem);
-
-            $(dropdownItem).click(function(){
-                nodenewTag = document.createElement("span");
-                $(nodenewTag).val($(dropdownItem).text());
-                nodenewTag.textContent = $(dropdownItem).text();
-                nodenewTag.className = "tagN";
-                tagContainer.append(nodenewTag);
-                console.log("clicked");
-            })
-        })
-
-        $(note_form).click(function(){
-            $("#dropdownItem").remove();
-        })
-
-        noteTag = document.createElement("span");
-        $(noteTag).val($("#noteTag").text());
-        noteTag.textContent = $("#noteTag").text();
-        noteTag.className = "tagN";
-
-        tagContainer = document.createElement("div");
-        tagContainer.append(noteTag);
-        tagContainer.append(noteAddTag);
-        tagContainer.className = "tagContainerN";
-
-
         let parent = $(button).parent().parent();
+        if(parent.find(".noteTagDiv").length !== 0){
+            console.log(parent.find(".noteTagDiv").length);
+            let noteAddTag = document.createElement("input");
+            noteAddTag.type = "button";
+            $(noteAddTag).val("ADD");
+            noteAddTag.textContent = "ADD";
+            noteAddTag.className = "tagButtonN";
+
+            $(noteAddTag).click(function(){
+                let dropdownItem = document.createElement("div");
+                $(dropdownItem).val($("#tag").val());
+                dropdownItem.textContent = $("#tag").val();
+                dropdownItem.id = "dropdownItem";
+                tagContainer.append(dropdownItem);
+
+                $(dropdownItem).click(function(){
+                    nodenewTag = document.createElement("span");
+                    $(nodenewTag).val($(dropdownItem).text());
+                    nodenewTag.textContent = $(dropdownItem).text();
+                    nodenewTag.className = "tagN";
+                    tagContainer.append(nodenewTag);
+                    console.log("clicked");
+                })
+            })
+
+            $(note_form).click(function(){
+                $("#dropdownItem").remove();
+            })
+
+            noteTag = document.createElement("span");
+            $(noteTag).val($("#noteTag").text());
+            noteTag.textContent = $("#noteTag").text();
+            noteTag.className = "tagN";
+
+            tagContainer = document.createElement("div");
+            tagContainer.append(noteTag);
+            tagContainer.append(noteAddTag);
+            tagContainer.className = "tagContainerN";
+        }else {
+            $(".tagN").remove();
+            $(".tagCL").remove();
+        }
+
 
         let text = parent.find(".noteContent").html();
         let withBL = text.split('<br>').join('\n');
@@ -461,6 +464,48 @@ $(document).ready(function(){
         $("#editCL").empty();
 
         let parent = $(button).parent().parent();
+
+        if(parent.find("#checklistTag").length !== 0){
+            console.log(parent.find("#checklistTag").length);
+            let noteAddTag = document.createElement("input");
+            noteAddTag.type = "button";
+            $(noteAddTag).val("ADD");
+            noteAddTag.textContent = "ADD";
+            noteAddTag.className = "tagButtonN";
+
+            $(noteAddTag).click(function(){
+                let dropdownItem = document.createElement("div");
+                $(dropdownItem).val($("#tag").val());
+                dropdownItem.textContent = $("#tag").val();
+                dropdownItem.id = "dropdownItem";
+                tagContainer.append(dropdownItem);
+
+                $(dropdownItem).click(function(){
+                    nodenewTag = document.createElement("span");
+                    $(nodenewTag).val($(dropdownItem).text());
+                    nodenewTag.textContent = $(dropdownItem).text();
+                    nodenewTag.className = "tagN";
+                    tagContainer.append(nodenewTag);
+                    console.log("clicked");
+                })
+            })
+
+            $(note_form).click(function(){
+                $("#dropdownItem").remove();
+            })
+
+            noteTag = document.createElement("span");
+            $(noteTag).val($("#checklistTag").text());
+            noteTag.textContent = $("#checklistTag").text();
+            noteTag.className = "tagN";
+
+            tagContainer = document.createElement("div");
+            tagContainer.append(noteTag);
+            tagContainer.append(noteAddTag);
+            tagContainer.className = "tagContainerN";
+        }else {
+            $(".tagCL").remove();
+        }
 
         let checklistAddTag = document.createElement("input");
         checklistAddTag.type = "button";
@@ -602,4 +647,5 @@ $(document).ready(function(){
         $("#editCL").append(note_form);
         off_editCL()
     }
+
 });
