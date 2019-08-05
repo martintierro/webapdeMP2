@@ -294,7 +294,7 @@ ul{
     z-index: 3;
     position: relative;
     width: 500px;
-    height: 60%;
+    height: 460px;
 
     margin: auto;
     top: 15%;
@@ -356,9 +356,7 @@ textarea:focus{
 }
 
 #savebutton{
-    float: right;
     margin-right: 10px;
-    margin-top: 10px;
     background: transparent;
     border: rgba(0, 0, 0, 0.6) solid;
     border-radius: 5px;
@@ -430,6 +428,28 @@ textarea:focus{
 
 .add:hover{
     color: rgb(0, 0, 0,0.87);
+}
+
+.filebutton{
+    position: relative;
+    display: block;
+    height: 30px;
+    background-color: transparent;
+    border: rgba(0, 0, 0, 0.6) solid;
+    border-radius: 5px;
+    font-family: Roboto, sans-serif;
+    font-size: 10pt;
+    color: rgb(0, 0, 0);
+    font-weight:500;
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function:ease;
+    margin-right: 5px;
+}
+
+.footer{
+    display: flex;
+    flex-direction: row-reverse;
 }
 
 .noteDiv{

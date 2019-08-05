@@ -126,13 +126,24 @@ $(document).ready(function(){
         });
 
 
+        let file_button = document.createElement("input");
+        file_button.type = "button";
+        file_button.value = "UPLOAD IMAGE";
+        file_button.className = "filebutton";
+        file_button.addEventListener('click', openDialog);
+
+        let footer = document.createElement("div");
+        footer.className = "footer";
+        footer.append(save);
+        footer.append(file_button);
+
         note_form = document.createElement("form");
         note_form.action = "create_note";
         note_form.method = "POST";
         note_form.id = "noteform";
         note_form.append(title);
         note_form.append(content);
-        note_form.append(save);
+        note_form.append(footer);
 
         $(note_form).hide();
         $("#newpost").append(note_form);
@@ -330,13 +341,24 @@ $(document).ready(function(){
         save.value = "SAVE";
         save.id = "savebutton";
 
+        let file_button = document.createElement("input");
+        file_button.type = "button";
+        file_button.value = "UPLOAD IMAGE";
+        file_button.className = "filebutton";
+        file_button.addEventListener('click', openDialog);
+
+        let footer = document.createElement("div");
+        footer.className = "footer";
+        footer.append(save);
+        footer.append(file_button);
+
         note_form = document.createElement("form");
         note_form.action = "view_note";
         note_form.method = "GET";
         note_form.id = "noteform";
         note_form.append(title);
         note_form.append(content);
-        note_form.append(save);
+        note_form.append(footer);
 
         $(note_form).hide();
         $("#editpost").append(note_form);
