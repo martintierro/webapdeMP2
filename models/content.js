@@ -19,7 +19,8 @@ const contentSchema = new Schema({
     title: String,
     user: userSchema,
     note: String,
-    checklist: checklistSchema  
+    checklist: [checklistSchema],
+    tags: [String] 
 })
 
 const contentModel = mongoose.model('content', contentSchema);
