@@ -355,6 +355,12 @@ textarea:focus{
     height: 100%;
 }
 
+.tagContainerN{
+    position: relative;
+    top:-20px;
+    left: 15px;
+}
+
 .tagN{
     color: grey;
     font-size: 10pt;
@@ -364,6 +370,23 @@ textarea:focus{
 
     border: 1px rgba(148, 148, 148) solid;
     border-radius: 10px;
+}
+
+.tagButtonN{
+    color: grey;
+    font-size: 10pt;
+    font-family: Roboto;
+
+    padding: 2px 4px 2px 4px;
+
+    border: 1px rgb(148, 148, 148) solid;
+    border-radius: 10px;
+    background-color: #3d3d3d00;
+}
+
+.tagButtonN:hover{
+    color: black;
+    border: 1px rgb(0, 0, 0) solid;
 }
 
 #savebutton{
@@ -609,6 +632,41 @@ textarea:focus{
     border: 1px rgba(148, 148, 148) solid;
     border-radius: 10px;
 }
+
+.tagContainerCL{
+    position: relative;
+    top:-20px;
+    left: 15px;
+}
+
+.tagCL{
+    color: rgb(82, 82, 82);
+    font-size: 10pt;
+    font-family: Roboto;
+
+    padding: 2px 4px 2px 4px;
+
+    border: 1px rgb(82, 82, 82) solid;
+    border-radius: 10px;
+}
+
+.tagButtonCL{
+    color: rgb(82, 82, 82);
+    font-size: 10pt;
+    font-family: Roboto;
+
+    padding: 2px 4px 2px 4px;
+
+    border: 1px rgb(82, 82, 82) solid;
+    border-radius: 10px;
+    background-color: #3d3d3d00;
+}
+
+.tagButtonCL:hover{
+    color: black;
+    border: 1px rgb(0, 0, 0) solid;
+}
+
 
 .noteButtons{
     position:relative;

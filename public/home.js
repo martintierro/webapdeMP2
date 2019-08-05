@@ -320,8 +320,8 @@ $(document).ready(function(){
 
         let noteAddTag = document.createElement("input");
         noteAddTag.type = "button";
-        $(noteAddTag).val("Add Tag");
-        noteAddTag.textContent = "Add Tag";
+        $(noteAddTag).val("ADD");
+        noteAddTag.textContent = "ADD";
         noteAddTag.className = "tagButtonN";
 
         noteTag = document.createElement("span");
@@ -414,6 +414,22 @@ $(document).ready(function(){
 
         let parent = $(button).parent().parent();
 
+        let checklistAddTag = document.createElement("input");
+        checklistAddTag.type = "button";
+        $(checklistAddTag).val("ADD");
+        checklistAddTag.textContent = "ADD";
+        checklistAddTag.className = "tagButtonCL";
+
+        checklistTag = document.createElement("span");
+        $(checklistTag).val($("#checklistTag").text());
+        checklistTag.textContent = $("#checklistTag").text();
+        checklistTag.className = "tagCL";
+
+        tagContainer = document.createElement("div");
+        tagContainer.append(checklistTag);
+        tagContainer.append(checklistAddTag);
+        tagContainer.className = "tagContainerCL";
+
         title = document.createElement("input");
         title.type = "text";
         $(title).attr("placeholder", "Title");
@@ -427,6 +443,7 @@ $(document).ready(function(){
         note_form.method = "GET";
         note_form.id = "noteform";
         note_form.append(title);
+        note_form.append(tagContainer);
 
         let myControls = parent.find(".checklistContent").find('label.checklistItem');
         let checkboxes = parent.find(".checklistContent").find("input");
