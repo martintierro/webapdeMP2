@@ -171,7 +171,7 @@ app.get("/checklists", urlencoder, (req,res)=>{
 })
 
 app.get("/search", urlencoder, (req, res)=>{
-
+	let search_query = req.body.search_input;
 })
 
 app.listen(3000, function () {
