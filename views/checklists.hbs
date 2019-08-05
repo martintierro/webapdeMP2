@@ -3,19 +3,20 @@
 
 <head>
     <script src="jquery.min.js"> </script>
-    <link rel="stylesheet" type="text/css" href="/home.css">
+    <link rel="stylesheet" type="text/css" href="/checklists.css">
 </head>
 
 <body>
     <!--Side Navigation-->
     <div class="sidenav">
         <ul>
+            <form action="home" method="GET">
+                <input class="selection" type="submit" value="View All">
+            </form>
             <form action="notes" method="GET">
                 <input class="selection" type="submit" value="Notes">
             </form>
-            <form action="checklists" method="GET">
-                <input class="selection" type="submit" value="Checklists">
-            </form>
+            <input id="checklists_selection" class="selection" type="submit" value="Checklists">
         </ul>
         <div class="tagheader">TAGS</div>
         <ul id="tags_container">
@@ -34,39 +35,15 @@
         <form class="searchForm" method="GET">
             <input class="searchBar" type="text" placeholder="Search">
         </form>
-        
-        <!--<img class="logoutIcon" src="Checkbox Icon.svg">-->
     </div>
 
     <!--Page Content-->
     <div class="content">
-        <!--Welcome {{username}}!
-        <br>
-        <br>
-
-        <div>
-            <p>Preferences </p>
-
-            <form action="preferences" method="POST">
-                font size: <input type="number" name="fontsize">
-                <input type="submit" value="Submit Query">
-            </form>
-        </div>-->
-
         <form class="createpostForm" method="post" action="create_post">
             <input id="postinput" type="text" placeholder="Create a note or checklist...">
-            <input class="createpostButton" id="notebutton"type="button" value="NOTE" >
             <input class="createpostButton" id="listbutton" type="button" value="CHECKLIST">
-            <input class="createpostButton" id="picbutton" type="button" value="PIC">
             <input id='fileid' type='file' accept=".jpg" style="display: none">
         </form>
-
-        <div id="noteDiv">
-            <p id="noteTitle">Restaurants to Try</p>
-            <p id="noteContent">Oficina do Duque<br>Calcada do Duque 43 A 1200-155, Lisbon 1200-155, Portugal<br>PP-PPP Mediterranean, European, Portuguese<br>4.5<br>3 min Walk<br><br>Boa-Bao<br>Largo Raphael Bordalo Pinheiro Chiado, Lisbon 1200-369, Portugal<br>PP-PPP Asian Thai, Vietnames<br>4.5<br>3 min Walk</p>
-
-            <input id="editNote" type="button" value="EDIT">
-        </div>
 
         <div id="checklistDiv">
             <p id="checklistTitle">Upcoming Schoolwork</p>
@@ -92,19 +69,13 @@
         </div>
     </div>
 
-    <div id="overlay_editN">
-        <div id="background_editN"></div>
-        <div id="editpost">
-        </div>
-    </div>
-
     <div id="overlay_editCL">
         <div id="background_editCL"></div>
         <div id="editCL">
         </div>
     </div>
 
-    <script src="home.js"></script>
+    <script src="checklists.js"></script>
 </body>
 
 </html>
