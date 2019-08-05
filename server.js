@@ -210,6 +210,17 @@ app.post("/edit_checklist", urlencoder, (req, res)=>{
 	})
 })
 
+app.post("/add_tag", urlencoder, (req, res)=>{
+	let id = req.body.noteid;
+	//let tag = req.body.tag;	IDK HOW IN HBS
+	Content.findByIdAndUpdate(id, {/*tag*/}).then((result)=>{
+		res.render("home.hbs", {
+			username: doc.username
+			//INSERT HOW TO ADD TAGS AT THE SIDE
+		})
+	})
+})
+
 app.get("/home", urlencoder, (req,res)=>{
 	res.render("home.hbs");
 })
@@ -227,7 +238,7 @@ app.get("/search", urlencoder, (req, res)=>{
 })
 
 app.post("/uploadimage", urlencoder, (req, res)=>{
-
+	//let image = req.body.image;
 })
 
 app.listen(3000, function () {
