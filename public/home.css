@@ -465,7 +465,7 @@ textarea:focus{
     margin: 5px;
 
     background-color:rgb(255, 226, 61);
-    padding: 5px 20px 5px 20px;
+    padding: 5px 20px 25px 20px;
 
     border-radius: 15px;
     transition-property: all;
@@ -528,6 +528,16 @@ textarea:focus{
     background: white;
 }*/
 
+.noteTag{
+    color: grey;
+    font-size: 10pt;
+
+    padding: 2px 4px 2px 4px;
+
+    border: 1px rgba(148, 148, 148) solid;
+    border-radius: 10px;
+}
+
 .checklistDiv{
     position: relative;
     height: 45%;
@@ -539,7 +549,7 @@ textarea:focus{
     flex-wrap: wrap;
 
     background-color:rgb(255, 173, 230);
-    padding: 5px 0 20px 20px;
+    padding: 5px 20px 25px 20px;
 
     border-radius: 15px;
     transition-property: all;
