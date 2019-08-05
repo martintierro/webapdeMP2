@@ -86,10 +86,16 @@ $(document).ready(function(){
         item_input.type ="text";
         $(item_input).attr("placeholder","List Item");
         item_input.className = "iteminput";
+        item_input.name = "list_item[]";
 
         let remove = document.createElement("span");
         remove.innerHTML ="REMOVE";
         remove.className = "remove";
+
+        $(remove).click(function() {
+            $(this).parent().remove();
+        });
+
 
         divCtnr.append(item_input);
         divCtnr.append(remove);
@@ -104,14 +110,27 @@ $(document).ready(function(){
         add.innerHTML = "ADD";
         add.className = "add";
         $(add).click(function() {
-            $("form > div:first-child").clone(true).insertBefore("form > div:last-child");
-            $(item_input).val("");
-            item_input.textContent="";
-            return false;
-        });
+            item_input = document.createElement("input");
+            item_input.type ="text";
+            $(item_input).attr("placeholder","List Item");
+            item_input.className = "iteminput";
+            item_input.name = "list_item[]";
 
-        $(remove).click(function() {
-            $(this).parent().remove();
+            remove = document.createElement("span");
+            remove.innerHTML ="REMOVE";
+            remove.className = "remove";
+
+            $(remove).click(function() {
+                $(this).parent().remove();
+            });
+
+            divCtnr = document.createElement("div");
+            divCtnr.className ="item_container";
+            divCtnr.append(item_input);
+            divCtnr.append(remove);
+
+            $(divCtnr).insertBefore($(footer));
+            return false;
         });
 
         let footer = document.createElement("div");
