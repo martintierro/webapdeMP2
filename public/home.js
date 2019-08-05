@@ -98,6 +98,11 @@ $(document).ready(function(){
         });
 
 
+        checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.className = "check_item";
+
+        divCtnr.append(checkbox)
         divCtnr.append(item_input);
         divCtnr.append(remove);
 
@@ -117,6 +122,10 @@ $(document).ready(function(){
             item_input.className = "iteminput";
             item_input.name = "list_item[]";
 
+            checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.className = "check_item";
+
             remove = document.createElement("span");
             remove.innerHTML ="REMOVE";
             remove.className = "remove";
@@ -127,6 +136,7 @@ $(document).ready(function(){
 
             divCtnr = document.createElement("div");
             divCtnr.className ="item_container";
+            divCtnr.append(checkbox);
             divCtnr.append(item_input);
             divCtnr.append(remove);
 
@@ -260,23 +270,67 @@ $(document).ready(function(){
             content.name = "note_content";
 
             spanItem = document.createElement("div");
+            spanItem.className = "item_container";
             remove = document.createElement("span");
             remove.innerHTML ="REMOVE";
             remove.className = "remove";
+            $(remove).click(function() {
+                $(this).parent().remove();
+            });
+
             
             spanItem.append(checkbox);
             spanItem.append(content);
             spanItem.append(remove);
 
             note_form.append(spanItem);
-        }        
+        }
+
+        let add = document.createElement("div");
+        add.innerHTML = "ADD";
+        add.className = "add";
+
+        $(add).click(function() {
+            item_input = document.createElement("input");
+            item_input.type ="text";
+            $(item_input).attr("placeholder","List Item");
+            item_input.className = "task";
+            item_input.name = "list_item[]";
+
+            checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.className = "check_item";
+
+            remove = document.createElement("span");
+            remove.innerHTML ="REMOVE";
+            remove.className = "remove";
+
+            $(remove).click(function() {
+                $(this).parent().remove();
+            });
+
+            divCtnr = document.createElement("div");
+            divCtnr.className ="item_container";
+            divCtnr.append(checkbox);
+            divCtnr.append(item_input);
+            divCtnr.append(remove);
+
+            $(divCtnr).insertBefore($(footer));
+            return false;
+        });
+
+
 
         save = document.createElement("input");
         save.type = "submit";
         save.value = "SAVE";
         save.id = "savebutton";
+
+        let footer = document.createElement("div");
+        footer.append(add);
+        footer.append(save);
        
-        note_form.append(save);
+        note_form.append(footer);
 
         $(note_form).hide();
         $("#editCL").append(note_form);
