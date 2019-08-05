@@ -205,10 +205,10 @@ app.post("/signup", urlencoder, (req, res) => {
 /////////////////TOUCHED
 app.post("/create_note", urlencoder, (req,res) =>{
 	let title = req.body.note_title;
-	let note = req.body.note_content;
+	let content = req.body.note_content;
 
-	let content = new Content({
-		title, note
+	let Content = new Content({
+		title, content
 	})
 	
 	content.save().then((doc) => {
