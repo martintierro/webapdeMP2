@@ -212,7 +212,7 @@ app.post("/add_tag", urlencoder, (req, res)=>{
 
 	Content.findByIdAndUpdate(id, {/*tag*/}).then((result)=>{
 		res.render("home.hbs", {
-			username: doc.username
+			username: doc.username,
 			//INSERT HOW TO ADD TAGS AT THE SIDE
 			tags:result
 		})
@@ -251,7 +251,7 @@ app.get("/tag/#",urlencoder,(req,res)=>{
 	Content.findById()
 	Content.findById(id, {tag}).then((result)=>{
 		res.render("home.hbs", {
-			username: doc.username
+			username: doc.username,
 			posts: result
 		})
 	})
