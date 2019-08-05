@@ -9,14 +9,22 @@
 <body>
     <!--Side Navigation-->
     <div class="sidenav">
-        <div class="selection">Notes</div>
-        <div class="selection">Checklists</div> <br>
-        <div class="labels">LABELS</div>
+        <ul>
+            <li class="selection">Notes</li>
+            <li class="selection">Checklists</li>
+        </ul>
+        <div class="tagheader">TAGS</div>
+        <ul id="tags_container">
+            <li class="selection">School</li>
+            <li class="selection">Travel</li>
+        </ul>
     </div>
 
     <!--Header-->
     <div class="header sticky" id="HeaderDiv">
-        <a class="logoutLink" href="login.html"> Logout</a>
+        <form action="logout" method="POST" id="logoutform">
+            <input type="button" value="Sign out" id="logout">
+        </form>
         <h2 class="name">CheckNotes</h2>
         
         <form class="searchForm">

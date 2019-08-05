@@ -76,9 +76,8 @@ html, body {
 
 .name{
     position: relative;
-    top:-10%;
-    left: 5%;
-    font-family: Roboto;
+    font-family: Roboto, sans-serif;
+    vertical-align: center;
 }
 
 .logoutIcon{
@@ -86,11 +85,29 @@ html, body {
     float: right;
 }
 
-.logoutLink{
+#logoutform{
     position: relative;
     top: 30%;
     left:90%;
+}
 
+#logout{
+    color: rgb(129,129,129,0.6);
+    text-decoration: none;
+    font-family: Roboto,sans-serif;
+    background-color: #ffffff;
+    border: rgb(129,129,129,0.6) solid;
+    border-radius: 5px;
+    height: 30px;
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function:ease;
+}
+
+#logout:hover{
+    color: rgb(129,129,129,0.87);
+    border: rgb(129,129,129,0.87) solid;
+    box-shadow: 0 1px 3px rgb(50, 50, 50, 0.25);
 }
 
 .sidenav{
@@ -112,10 +129,13 @@ html, body {
     padding: 8px 8px 8px 30px;
 
     text-decoration: none;
-    font-size: 12pt;
-    font-family: Roboto;
+    font-size: 14pt;
+    font-family: Roboto,sans-serif;
     color: #818181;
     display: block;
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function:ease;
 }
 
 .selection:hover {
@@ -124,17 +144,31 @@ html, body {
     border-radius: 0 25px 25px 0;
 }
 
-.labels{
+.tagheader{
     padding: 20px 8px 8px 15px;
-
+    letter-spacing: .07272727em;
     text-decoration: none;
-    font-size: 10pt;
-    font-family: Roboto;
+    font-size: .6875rem;
+    font-family: Roboto,sans-serif;
+    font-weight: 500;
     color: #818181;
     display: block;
 
     border-top: .75px solid #818181;
 }
+
+ul{
+    font-family: Roboto,sans-serif;
+    list-style: none;
+    font-weight: 500;
+    color: #3d3d3d;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin-top: 0;
+}
+
+
 
 .createpostForm{
     position: relative;
@@ -382,6 +416,14 @@ textarea:focus{
     padding: 5px 20px 5px 20px;
 
     border-radius: 15px;
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function:ease;
+}
+
+#noteDiv:hover{
+    background-color: rgb(245, 218, 63);
+    box-shadow: 0 3px 6px rgb(50, 50, 50, 0.25);
 }
 
 #noteTitle{
@@ -445,7 +487,16 @@ textarea:focus{
     padding: 5px 20px 5px 20px;
 
     border-radius: 15px;
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function:ease;
 }
+
+.checklistDiv:hover{
+    background-color: rgb(245, 167, 220);
+    box-shadow: 0 3px 6px rgb(50, 50, 50, 0.25);
+}
+
 
 .checklistTitle{
     font-size: 12pt;
@@ -537,5 +588,4 @@ textarea:focus{
     background-color: rgb(255, 245, 145);
 
     border-radius: 15px;
-
 }
