@@ -22,7 +22,7 @@ $(document).ready(function(){
     $("#listbutton").click(function () {
         list_input();
         on();
-    })
+    });
 
     document.getElementById('picbutton').addEventListener('click', openDialog);
     //button now clicks file button
@@ -148,7 +148,9 @@ $(document).ready(function(){
         save.type = "button";
         save.value = "SAVE";
         save.id = "savebutton";
-        $(save).click(add_list);
+        $(save).click(function () {
+
+        });
 
 
         let add = document.createElement("div");
@@ -193,7 +195,7 @@ $(document).ready(function(){
         note_form.id = "noteform";
         note_form.append(title);
         note_form.append(divCtnr);
-        note_form.append(footer)
+        note_form.append(footer);
 
         $(note_form).hide();
         $("#newpost").append(note_form);
@@ -253,7 +255,7 @@ $(document).ready(function(){
         $(note_form).show();
     }
 
-    $("#editCheckList").click(function(){
+    $(".editCheckList").click(function(){
         count();
         loadCheckList();
         on_editCL();
@@ -290,8 +292,8 @@ $(document).ready(function(){
         note_form.id = "noteform";
         note_form.append(title);
 
-        let myControls = $("#checklistContent").find('label.checklistItem');
-        let checkboxes = $("#checklistContent").find("input");
+        let myControls = $(".checklistContent").find('label.checklistItem');
+        let checkboxes = $(".checklistContent").find("input");
         /*document.getElementById("checklistContent").elements['p_id[]'];*/
         console.log(myControls.length);
         for (var i = 0; i < myControls.length; i++) {
