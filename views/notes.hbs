@@ -1,72 +1,96 @@
-<html>
-    <head>
-        <script src="jquery.min.js"> </script>
-        <link rel="stylesheet" type="text/css" href="/notes.css">
-    </head>
-
-    <body>
-        <!--Side Navigation-->
-        <div class="sidenav">
-            <ul>
-                <form action="home" method="GET">
-                    <input class="selection" type="submit" value="View All">
-                </form>
-                <input id="notes_selection" class="selection" type="submit" value="Notes">
-                <form action="checklists" method="GET">
-                    <input id="checklists_selection" class="selection" type="submit" value="Checklists">
+<head>
+    <script src="jquery.min.js"> </script>
+    <link rel="stylesheet" type="text/css" href="/notes.css">
+</head>
+<!--<script>const handleBar = require('handlebars')</script>-->
+<body>
+    <!--Side Navigation-->
+    <div class="sidenav">
+        <ul>
+            <form action="home" method="GET">
+                <input class="selection" type="submit" value="View All">
+            </form>
+            <input id="notes_selection" class="selection" type="submit" value="Notes">
+            <form action="checklists" method="GET">
+                <input id="checklists_selection" class="selection" type="submit" value="Checklists">
+            </form>
+        </ul>
+        <div class="tagDiv">
+            <div class="tagheader">TAGS
+                <input class="addtagButton" type="button" value="ADD">
+            </div>
+            
+            <ul id="tags_container">
+                <form id="tags_list">
+                    <input id="tag" class="selection" type="text" value="School">
+                    <input id="tag" class="selection" type="text" value="Travel">
                 </form>
             </ul>
-            <div class="tagDiv">
-                <div class="tagheader">TAGS</div>
-                <ul id="tags_container">
-                    <li class="selection">School</li>
-                    <li class="selection">Travel</li>
-                </ul>
+        </div>
+    </div>
+
+    <!--Header-->
+    <div class="header sticky" id="HeaderDiv">
+        <form action="logout" method="POST" id="logoutform">
+            <input type="submit" value="Sign out" id="logout">
+        </form>
+        <h2 class="name">CheckNotes</h2>
+        
+        <form class="searchForm" method="GET">
+            <input id="search_input" class="searchBar" type="text" placeholder="Search">
+        </form>
+
+    </div>
+
+    <!--Page Content-->
+    <div id="content">
+
+        <form class="createpostForm" method="post" action="create_post">
+            <input id="postinput" type="text" placeholder="Create a note or checklist...">
+            <input class="createpostButton" id="notebutton"type="button" value="NOTE" >
+            <input class="createpostButton" id="picbutton" type="button" value="IMAGE">
+            <input id='fileid' type='file' accept=".jpg" style="display: none">
+        </form>
+
+        <div id="notescontainer">
+            <div class="noteDiv">
+                <p class="noteTitle">Restaurants to Try</p>
+                <form class="noteButtons">
+                    <input class="editNote" type="button" value="EDIT"><br>
+                    <input class="deleteNote" type="button" value="DELETE">
+                </form>
+                <p class="noteContent">Oficina do Duque<br>Calcada do Duque 43 A 1200-155, Lisbon 1200-155, Portugal<br>PP-PPP Mediterranean, European, Portuguese<br>4.5<br>3 min Walk<br><br>Boa-Bao<br>Largo Raphael Bordalo Pinheiro Chiado, Lisbon 1200-369, Portugal<br>PP-PPP Asian Thai, Vietnames<br>4.5<br>3 min Walk</p>
+                
+                <div class="noteTagDiv">
+                    <span id="noteTag">Travel</span>
+                </div>
             </div>
         </div>
+    </div>
 
-        <!--Header-->
-        <div class="header sticky" id="HeaderDiv">
-            <form action="logout" method="POST" id="logoutform">
-                <input type="submit" value="Sign out" id="logout">
-            </form>
-            <h2 class="name">CheckNotes</h2>
-            
-            <form class="searchForm" method="GET">
-                <input class="searchBar" type="text" placeholder="Search">
-            </form>
-            
+    <!--Overlay-->
+    <div id="overlay">
+        <div id="background"></div>
+        <div id="newpost">
         </div>
+    </div>
 
-        <!--Page Content-->
-        <div class="content">
-            <form class="createpostForm" method="post" action="create_post">
-                <input id="postinput" type="text" placeholder="Create a note or checklist...">
-                <input class="createpostButton" id="notebutton"type="button" value="NOTE" >
-                <input class="createpostButton" id="picbutton" type="button" value="PIC">
-                <input id='fileid' type='file' accept=".jpg" style="display: none">
-            </form>
-
-            <div id="noteDiv">
-                <p id="noteTitle">Restaurants to Try</p>
-                <p id="noteContent">Oficina do Duque<br>Calcada do Duque 43 A 1200-155, Lisbon 1200-155, Portugal<br>PP-PPP Mediterranean, European, Portuguese<br>4.5<br>3 min Walk<br><br>Boa-Bao<br>Largo Raphael Bordalo Pinheiro Chiado, Lisbon 1200-369, Portugal<br>PP-PPP Asian Thai, Vietnames<br>4.5<br>3 min Walk</p>
-
-                <input id="editNote" type="button" value="EDIT">
-            </div>
-
-        <!--Overlay-->
-        <div id="overlay">
-            <div id="background"></div>
-            <div id="newpost">
-            </div>
+    <div id="overlay_editN">
+        <div id="background_editN"></div>
+        <div id="editpost">
         </div>
+    </div>
+    
+    <script type = "text/x-handlebars-template" id = "noteTemplate">
+        <div class="noteDiv">
+            <p id="noteTitle">{{title}}</p>
+            <p id="noteContent">{{content}}</p>
 
-        <div id="overlay_editN">
-            <div id="background_editN"></div>
-            <div id="editpost">
-            </div>
+            <input id="editNote" type="button" value="EDIT">
         </div>
+    
+    </script>
+    <script src="notes.js"></script>
+</body>
 
-        <script src="notes.js"></script>
-    </body>
 </html>

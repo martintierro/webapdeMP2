@@ -352,7 +352,7 @@ $(document).ready(function(){
             noteAddTag.textContent = "ADD";
             noteAddTag.className = "tagButtonN";
 
-            $(noteAddTag).click(function(){
+            /*$(noteAddTag).click(function(){
                 let dropdownItem = document.createElement("div");
                 $(dropdownItem).val($("#tag").val());
                 dropdownItem.textContent = $("#tag").val();
@@ -367,7 +367,7 @@ $(document).ready(function(){
                     tagContainer.append(nodenewTag);
                     console.log("clicked");
                 })
-            })
+            })*/
 
             $(note_form).click(function(){
                 $("#dropdownItem").remove();

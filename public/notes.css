@@ -2,13 +2,14 @@ body{
     background-color:white;
     left:160px;
     margin: 0;
+    max-width:100%;
+    overflow-x: hidden ;
+    height: 100%;
 }
 
 html, body {
     /*width: 91%;*/
-    max-width:100%;
-    overflow-x: hidden;
-    height: 100%
+    min-height: 100%
 }
 
 .header{
@@ -20,29 +21,38 @@ html, body {
     height: 10%;
 
     box-shadow: 0 3px 6px rgba(197, 197, 197, 0.25);
+    z-index: 2;
 }
 
-.content {
+#content {
     z-index:0;
 
     position: relative;
-    top: 60px;
+    top: 70px;
     left: 200px;
 
     height: 84%;
-    width: 78%;
+    width: 90%;
 
+    /*border:tomato solid;*/
     padding: 16px;
     overflow: hidden;
 
     font-family: Roboto;
+
+}
+
+#notescontainer{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .sticky {
     position: fixed;
     top: 0;
     left: 0;
-
     width: 100%;
 }
 
@@ -164,7 +174,10 @@ html, body {
 }
 
 .tagheader{
-    padding: 20px 8px 8px 15px;
+    position: relative;
+    top: -5px;
+    height: 8%;
+    padding: 18px 8px 0px 15px;
     letter-spacing: .07272727em;
     text-decoration: none;
     font-size: .6875rem;
@@ -175,6 +188,27 @@ html, body {
 
     border-top: .75px solid #818181;
 }
+
+.addtagButton{
+    position: relative;
+    left: 50%;
+    background: transparent;
+    border: rgb(255,202,0, .60) solid;
+    border-radius: 5px;
+    font-family: Roboto, sans-serif;
+    font-size: 10pt;
+    color:rgb(255,202,0);
+    font-weight:500;
+    height: 50%;
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function:ease;
+}
+
+.addtagButton:hover{
+    box-shadow: 0 1px 6px rgba(32, 32, 32, 0.137);
+}
+
 
 ul{
     font-family: Roboto,sans-serif;
@@ -187,12 +221,13 @@ ul{
     margin-top: 0;
 }
 
+
 .createpostForm{
     position: relative;
     top: 2%;
-    left: 28%;
+    left: 20%;
 
-    height: 9%;
+    height: 50px;
     width: 50%;
 
     display: flex;
@@ -260,6 +295,7 @@ ul{
     left: 0;
     right: 0;
     bottom: 0;
+    /*background-color: rgba(248, 252, 230, 0.315);*/
     z-index: 2;
     cursor: pointer;
 }
@@ -282,7 +318,7 @@ ul{
     z-index: 3;
     position: relative;
     width: 500px;
-    height: 60%;
+    height: 460px;
 
     margin: auto;
     top: 15%;
@@ -337,10 +373,49 @@ textarea:focus{
     height: 100%;
 }
 
+.tagContainerN{
+    position: relative;
+    top:-20px;
+    left: 20px;
+}
+
+.tagN{
+    color: grey;
+    font-size: 10pt;
+    font-family: Roboto;
+
+    padding: 2px 4px 2px 4px;
+
+    border: 1px rgba(148, 148, 148) solid;
+    border-radius: 10px;
+}
+
+.tagButtonN{
+    color: grey;
+    font-size: 10pt;
+    font-family: Roboto;
+
+    padding: 2px 4px 2px 4px;
+
+    border: 1px rgb(148, 148, 148) solid;
+    border-radius: 10px;
+    background-color: #3d3d3d00;
+}
+
+.tagButtonN:hover{
+    color: black;
+    border: 1px rgb(0, 0, 0) solid;
+}
+
+#dropdownItem{
+    background-color: #f1ffb1;
+    font-size: 10pt;
+    font-family: Roboto;
+}
+
 #savebutton{
     float: right;
     margin-right: 10px;
-    margin-top: 260px;
     background: transparent;
     border: rgba(0, 0, 0, 0.6) solid;
     border-radius: 5px;
@@ -359,16 +434,42 @@ textarea:focus{
     background-color: rgb(189, 189, 189);
 }
 
-#noteDiv{
+.filebutton{
     position: relative;
-    top: 10%;
-    left: 5%;
+    display: block;
+    height: 30px;
+    background-color: transparent;
+    border: rgba(0, 0, 0, 0.6) solid;
+    border-radius: 5px;
+    font-family: Roboto, sans-serif;
+    font-size: 10pt;
+    color: rgb(0, 0, 0);
+    font-weight:500;
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function:ease;
+    margin-right: 5px;
+}
+
+.footer{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.noteDiv{
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 
     height: 45%;
-    width: 25%;
+    width: 280px;
+
+    margin: 5px;
 
     background-color:rgb(255, 226, 61);
-    padding: 5px 20px 5px 20px;
+    padding: 5px 20px 25px 20px;
 
     border-radius: 15px;
     transition-property: all;
@@ -376,17 +477,18 @@ textarea:focus{
     transition-timing-function:ease;
 }
 
-#noteDiv:hover{
+.noteDiv:hover{
     background-color: rgb(245, 218, 63);
     box-shadow: 0 3px 6px rgb(50, 50, 50, 0.25);
 }
 
-#noteTitle{
+.noteTitle{
     font-size: 12pt;
     font-weight: 500;
+    width: 75%;
 }
 
-#noteContent{
+.noteContent{
     height: 67%;
     width: 100%;
 
@@ -399,16 +501,48 @@ textarea:focus{
     text-overflow: ellipsis;
 }
 
-#editNote{
+#noteTag{
+    color: grey;
+    font-size: 10pt;
+
+    padding: 2px 4px 2px 4px;
+
+    border: 1px rgba(148, 148, 148) solid;
+    border-radius: 10px;
+}
+
+.noteButtons{
+    position:relative;
+    left: 25px;
+    width: 50px;
+}
+
+.editNote{
     position: relative;
-    top:-215px;
-    left: 87%;
+    width: 100%;
 
     background-color:rgba(240, 230, 140, 0);
     border: 0px;
+    font-size:7pt;
+
+    text-align: right;
 }
 
-#editNote:hover{
+.editNote:hover{
+    color: rgb(255, 136, 0);
+}
+
+.deleteNote{
+    position: relative;
+    top: 0px;
+    background-color:rgba(240, 230, 140, 0);
+    border: 0px;
+    font-size:7pt;
+
+    text-align: right;
+}
+
+.deleteNote:hover{
     color: rgb(255, 136, 0);
 }
 
