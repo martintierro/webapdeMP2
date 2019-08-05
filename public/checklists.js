@@ -68,6 +68,7 @@ $(document).ready(function(){
         save.type = "submit";
         save.value = "SAVE";
         save.id = "savebutton";
+        save.id = "edit_checklist";
 
 
         let add = document.createElement("div");

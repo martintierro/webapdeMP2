@@ -54,6 +54,7 @@ $(document).ready(function(){
         save.type = "submit";
         save.value = "SAVE";
         save.id = "savebutton";
+        save.action = "edit_note";
 
         note_form = document.createElement("form");
         note_form.action = "create_note";

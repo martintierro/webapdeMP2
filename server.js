@@ -188,6 +188,28 @@ app.get("/view_checklist",urlencoder, (req,res)=>{
 })
 })
 
+app.post("/edit_note", urlencoder, (req, res)=>{
+	let title = req.body.note_title;
+	let content = req.body.note_content;
+	let id = req.body.noteid;
+	Content.findByIdAndUpdate(id, {title, content}).then((result)=>{
+		res.render("home.hbs", {
+			username: doc.username
+		})
+	})
+})
+
+app.post("/edit_checklist", urlencoder, (req, res)=>{
+	let title = req.body.note_title;
+	let content = req.body.note_content;
+	let id = req.body.noteid;
+	Content.findByIdAndUpdate(id, {title, content}).then((result)=>{
+		res.render("home.hbs", {
+			username: doc.username
+		})
+	})
+})
+
 app.get("/home", urlencoder, (req,res)=>{
 	res.render("home.hbs");
 })
@@ -201,6 +223,10 @@ app.get("/checklists", urlencoder, (req,res)=>{
 })
 
 app.get("/search", urlencoder, (req, res)=>{
+
+})
+
+app.post("/uploadimage", urlencoder, (req, res)=>{
 
 })
 
