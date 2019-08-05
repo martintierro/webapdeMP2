@@ -631,15 +631,14 @@ textarea:focus{
 
 .check_item{
     position: relative;
-    margin: auto;
-    left: -310px;
+    left: 10px ;
 }
 
 .task{
     position: relative;
     left: 5%;
 
-    width: 88%;
+    width: 75%;
     height: 5%;
 
     padding-left: 25px;

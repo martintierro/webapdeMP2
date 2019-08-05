@@ -255,10 +255,14 @@ $(document).ready(function(){
             content.className = "task";
             content.name = "note_content";
 
-            spanItem = document.createElement("span");
+            spanItem = document.createElement("div");
+            remove = document.createElement("span");
+            remove.innerHTML ="REMOVE";
+            remove.className = "remove";
             
-            spanItem.append(content);
             spanItem.append(checkbox);
+            spanItem.append(content);
+            spanItem.append(remove);
 
             note_form.append(spanItem);
         }        
