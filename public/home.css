@@ -433,7 +433,7 @@ textarea:focus{
     background: white;
 }*/
 
-.checklistDiv{
+#checklistDiv{
     position: relative;
     top: -37%;
     left: 37%;
@@ -447,12 +447,12 @@ textarea:focus{
     border-radius: 15px;
 }
 
-.checklistTitle{
+#checklistTitle{
     font-size: 12pt;
     font-weight: 500;
 }
 
-.checklistContent{
+#checklistContent{
     height: 66%;
     width: 100%;
 
@@ -487,7 +487,7 @@ textarea:focus{
 
 #editCheckList{
     position: relative;
-    top:-202px;
+    top:-198px;
     left: 87%;
 
     background-color:rgba(240, 230, 140, 0);
@@ -498,7 +498,7 @@ textarea:focus{
     color: rgb(255, 0, 64);
 }
 
-#overlay_edit{
+#overlay_editN{
     position: fixed;
     display: none;
     width: 100%;
@@ -512,7 +512,7 @@ textarea:focus{
     background-color: rgba(248, 252, 230, 0.315);
 }
 
-#background_edit{
+#background_editN{
     position: fixed;
     display: block;
     width: 100%;
@@ -529,7 +529,8 @@ textarea:focus{
 #editpost{
     z-index: 3;
     position: relative;
-    width: 25%;
+    /*width: 25%;*/
+    width: 350px;
     height: 60%;
 
     margin: auto;
@@ -537,5 +538,67 @@ textarea:focus{
     background-color: rgb(255, 245, 145);
 
     border-radius: 15px;
+}
 
+#overlay_editCL{
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    cursor: pointer;
+    background-color: rgba(248, 252, 230, 0.315);
+}
+
+#background_editCL{
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(248, 252, 230, 0.315);
+    z-index: 2;
+    cursor: pointer;
+}
+
+#editCL{
+    z-index: 3;
+    position: relative;
+    /*width: 25%;*/
+    width: 350px;
+    height: 60%;
+
+    margin: auto;
+    top: 15%;
+    background-color: rgb(255, 245, 145);
+
+    border-radius: 15px;
+}
+
+.check_item{
+    position: relative;
+    margin: auto;
+    left: -310px;
+}
+
+.task{
+    position: relative;
+    left: 5%;
+
+    width: 88%;
+    height: 5%;
+
+    padding-left: 25px;
+
+    background-color: rgba(255, 255, 255, 0);
+    border: 0;
+    font-family: Roboto, sans-serif;
+    font-size: 10pt;
 }

@@ -57,17 +57,17 @@
             <input id="editNote" type="button" value="EDIT">
         </div>
 
-        <div class="checklistDiv">
-            <p class="checklistTitle">Upcoming Schoolwork</p>
-            <form class="checklistContent">
-                <label class="checklistItem"><input type="checkbox">HCIFACE DJ4 - August 5</label><br>
-                <label class="checklistItem"><input type="checkbox">WEBAPDE Phase 2 - August 6</label><br>
-                <label class="checklistItem"><input type="checkbox">INTR-OS miniP2 - August 7</label><br>
-                <label class="checklistItem"><input type="checkbox">AUTOMAT Problem Set 4 - August 8</label><br>
-                <label class="checklistItem"><input type="checkbox">WEBPAPDE Mini Challenge 5 - August 8</label><br>
-                <label class="checklistItem"><input type="checkbox">INTR-OS Exam - August 9</label><br>
-                <label class="checklistItem"><input type="checkbox">HCIFACE Exam - August 9</label><br>
-                <label class="checklistItem"><input type="checkbox">SOCTEC2 Presentation - August 9</label><br>
+        <div id="checklistDiv">
+            <p id="checklistTitle">Upcoming Schoolwork</p>
+            <form id="checklistContent">
+                <label class="checklistItem" name="p_id[]"><input type="checkbox">HCIFACE DJ4 - August 5</label><br>
+                <label class="checklistItem" name="p_id[]"><input type="checkbox">WEBAPDE Phase 2 - August 6</label><br>
+                <label class="checklistItem" name="p_id[]"><input type="checkbox">INTR-OS miniP2 - August 7</label><br>
+                <label class="checklistItem" name="p_id[]"><input type="checkbox">AUTOMAT Problem Set 4 - August 8</label><br>
+                <label class="checklistItem" name="p_id[]"><input type="checkbox">WEBPAPDE Mini Challenge 5 - August 8</label><br>
+                <label class="checklistItem" name="p_id[]"><input type="checkbox">INTR-OS Exam - August 9</label><br>
+                <label class="checklistItem" name="p_id[]"><input type="checkbox">HCIFACE Exam - August 9</label><br>
+                <label class="checklistItem" name="p_id[]"><input type="checkbox">SOCTEC2 Presentation - August 9</label><br>
             </form>
 
             <input id="editCheckList" type="button" value="EDIT">
@@ -78,17 +78,18 @@
     <div id="overlay">
         <div id="background"></div>
         <div id="newpost">
-            <form class="postcontentForm">
-                <!--<input id="postcontent" type="text" placeholder="Enter something...">-->
-            </form>
         </div>
     </div>
 
-    <div id="overlay_edit">
-        <div id="background_edit"></div>
+    <div id="overlay_editN">
+        <div id="background_editN"></div>
         <div id="editpost">
-            <form class="postcontentForm">
-            </form>
+        </div>
+    </div>
+
+    <div id="overlay_editCL">
+        <div id="background_editCL"></div>
+        <div id="editCL">
         </div>
     </div>
 
