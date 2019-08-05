@@ -139,7 +139,7 @@ $(document).ready(function(){
         checkbox.type = "checkbox";
         checkbox.className = "check_item";
 
-        divCtnr.append(checkbox)
+        divCtnr.append(checkbox);
         divCtnr.append(item_input);
         divCtnr.append(remove);
 
@@ -148,7 +148,47 @@ $(document).ready(function(){
         save.value = "SAVE";
         save.id = "savebutton";
         $(save).click(function () {
+            let container = document.createElement("div");
+            container.className = "checklistDiv";
 
+            let new_title = document.createElement("p");
+            new_title.className = "checklistTitle";
+            $(new_title).val($(title).val());
+            new_title.textContent=$(title).val();
+
+            let new_form = document.createElement("form");
+            new_form.className = "checklistContent";
+
+            let myControls = $("#noteform").find('input.iteminput');
+            let checkboxes = $("#noteform").find("input.check_item");
+
+            for (let i = 0; i < myControls.length ; i++) {
+                let new_row = document.createElement("label");
+
+                let new_checkbox = document.createElement("input");
+                new_checkbox.type = "checkbox";
+                if(checkboxes[i].checked)
+                    new_checkbox.checked = true;
+                new_row.className = "checklistItem";
+                new_row.name = "p_id[]";
+                new_row.innerHTML = myControls[i].value;
+                $(new_row).prepend(new_checkbox);
+
+                $(new_form).append(new_row);
+                $(new_form).append(document.createElement("br"));
+            }
+
+            let edit_button = document.createElement("input");
+            edit_button.type = "button";
+            edit_button.className = "editNote";
+            edit_button.value = "EDIT";
+            $(edit_button).click(function (){
+            });
+
+            container.append(new_title);
+            container.append(edit_button);
+            container.append(new_form);
+            $("#notescontainer").append(container);
         });
 
 
@@ -231,8 +271,8 @@ $(document).ready(function(){
         title = document.createElement("input");
         title.type = "text";
         $(title).attr("placeholder", "Title");
-        $(title).val($("#noteTitle").text());
-        title.textContent=$("#noteTitle").text();
+        $(title).val($(".noteTitle").text());
+        title.textContent=$(".noteTitle").text();
         title.className = "post_title";
         title.name = "note_title";
 
@@ -280,8 +320,8 @@ $(document).ready(function(){
         title = document.createElement("input");
         title.type = "text";
         $(title).attr("placeholder", "Title");
-        $(title).val($("#checklistTitle").text());
-        title.textContent=$("#checklistTitle").text();
+        $(title).val($(".checklistTitle").text());
+        title.textContent=$(".checklistTitle").text();
         title.className = "post_title";
         title.name = "note_title";
 

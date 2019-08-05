@@ -494,6 +494,10 @@ textarea:focus{
     width: 25%;
     margin: 5px;
 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
     background-color:rgb(255, 173, 230);
     padding: 5px 20px 5px 20px;
 
@@ -512,6 +516,7 @@ textarea:focus{
 .checklistTitle{
     font-size: 12pt;
     font-weight: 500;
+    width: 75%;
 }
 
 .checklistContent{
@@ -547,9 +552,7 @@ textarea:focus{
 
 .editCheckList{
     position: relative;
-    top:-198px;
-    left: 87%;
-
+    width: 20%;
     background-color:rgba(240, 230, 140, 0);
     border: 0px;
 }
