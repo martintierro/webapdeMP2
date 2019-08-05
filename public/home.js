@@ -3,7 +3,7 @@ window.onscroll = function() {stickyFunction()};
 let header = document.getElementById("HeaderDiv");
 let sticky = header.offsetTop;
 let spanItem, divItem, divCtnr, content, title, note_form, item_input, checkbox, deletebox;
-let tag;
+let tag, noteTag, tagContainer;
 
 function stickyFunction() {
     if (window.pageYOffset > sticky) {
@@ -317,6 +317,22 @@ $(document).ready(function(){
 
     function loadNote(){
         $("#editpost").empty();
+
+        let noteAddTag = document.createElement("input");
+        noteAddTag.type = "button";
+        $(noteAddTag).val("Add Tag");
+        noteAddTag.textContent = "Add Tag";
+        noteAddTag.className = "tagButtonN";
+
+        noteTag = document.createElement("span");
+        $(noteTag).val($("#noteTag").text());
+        noteTag.textContent = $("#noteTag").text();
+        noteTag.className = "tagN";
+
+        tagContainer = document.createElement("div");
+        tagContainer.append(noteTag);
+        tagContainer.append(noteAddTag);
+        tagContainer.className = "tagContainerN";
         
         let text = $(".noteContent").html();
         let withBL = text.split('<br>').join('\n');
@@ -357,6 +373,7 @@ $(document).ready(function(){
         note_form.method = "GET";
         note_form.id = "noteform";
         note_form.append(title);
+        note_form.append(tagContainer);
         note_form.append(content);
         note_form.append(footer);
 

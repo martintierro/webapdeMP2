@@ -355,6 +355,17 @@ textarea:focus{
     height: 100%;
 }
 
+.tagN{
+    color: grey;
+    font-size: 10pt;
+    font-family: Roboto;
+
+    padding: 2px 4px 2px 4px;
+
+    border: 1px rgba(148, 148, 148) solid;
+    border-radius: 10px;
+}
+
 #savebutton{
     margin-right: 10px;
     background: transparent;
@@ -528,7 +539,7 @@ textarea:focus{
     background: white;
 }*/
 
-.noteTag{
+#noteTag{
     color: grey;
     font-size: 10pt;
 
@@ -587,6 +598,16 @@ textarea:focus{
     display: inline-block;
     padding-left: 1.7em;
     text-indent: -1.7em;
+}
+
+#checklistTag{
+    color: grey;
+    font-size: 10pt;
+
+    padding: 2px 4px 2px 4px;
+
+    border: 1px rgba(148, 148, 148) solid;
+    border-radius: 10px;
 }
 
 .noteButtons{
