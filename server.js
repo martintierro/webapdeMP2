@@ -5,6 +5,7 @@ const session = require("express-session")
 const cookieparser = require("cookie-parser")
 const mongoose = require("mongoose")
 const app = express()
+const Content = require('./models/content')//TOUCHED
 
 
 const {
@@ -12,10 +13,18 @@ const {
 } = require("./user.js")
 
 mongoose.Promise = global.Promise
+
+///////////TOUCHED
 mongoose.connect("mongodb://localhost:27017/users", {
 	useNewUrlParser: true
 })
 
+mongoose.connection.once('open', ()=>{
+	console.log("Connection to CheckNotes database has been successful ")
+}).on('error', (error)=>{
+	console.log('Connection error: ', error);
+})
+/////////////////
 const urlencoder = bodyparser.urlencoded({
 	extended: false
 });
@@ -141,6 +150,7 @@ app.post("/signup", urlencoder, (req, res) => {
 	}
 })
 
+/////////////////TOUCHED
 app.post("/create_note", urlencoder, (req,res) =>{
 	let title = req.body.note_title;
 	let content = req.body.note_content;
@@ -148,6 +158,23 @@ app.post("/create_note", urlencoder, (req,res) =>{
 
 app.post("/create_checklist", urlencoder, (req,res) =>{
 	let title = req.body.cltitle;
+
+	let content = new Content({
+		title, note
+	})
+	
+	content.save().then((doc) => {
+		/// if all goes well
+		console.log(doc)
+		res.render("home.hbs", {
+			username: doc.username
+		})
+	}, (err) => {
+		// if nag fail
+		res.send(err)
+	})
+
+
 })
 
 app.get("/view_note", urlencoder, (req,res)=>{
@@ -155,7 +182,43 @@ app.get("/view_note", urlencoder, (req,res)=>{
 })
 
 app.get("/view_checklist",urlencoder, (req,res)=>{
+	let id = req.body.noteid;
+	Content.findById(id).then((result)=>{
+		console.log(result.title)
+})
+})
 
+app.post("/edit_note", urlencoder, (req, res)=>{
+	let title = req.body.note_title;
+	let content = req.body.note_content;
+	let id = req.body.noteid;
+	Content.findByIdAndUpdate(id, {title, content}).then((result)=>{
+		res.render("home.hbs", {
+			username: doc.username
+		})
+	})
+})
+
+app.post("/edit_checklist", urlencoder, (req, res)=>{
+	let title = req.body.note_title;
+	let content = req.body.note_content;
+	let id = req.body.noteid;
+	Content.findByIdAndUpdate(id, {title, content}).then((result)=>{
+		res.render("home.hbs", {
+			username: doc.username
+		})
+	})
+})
+
+app.post("/add_tag", urlencoder, (req, res)=>{
+	let id = req.body.noteid;
+	//let tag = req.body.tag;	IDK HOW IN HBS
+	Content.findByIdAndUpdate(id, {/*tag*/}).then((result)=>{
+		res.render("home.hbs", {
+			username: doc.username
+			//INSERT HOW TO ADD TAGS AT THE SIDE
+		})
+	})
 })
 
 app.get("/home", urlencoder, (req,res)=>{
@@ -172,6 +235,10 @@ app.get("/checklists", urlencoder, (req,res)=>{
 
 app.get("/search", urlencoder, (req, res)=>{
 	let search_query = req.body.search_input;
+})
+
+app.post("/uploadimage", urlencoder, (req, res)=>{
+	//let image = req.body.image;
 })
 
 app.listen(3000, function () {
