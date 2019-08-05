@@ -5,6 +5,7 @@ const session = require("express-session")
 const cookieparser = require("cookie-parser")
 const mongoose = require("mongoose")
 const app = express()
+const Content = require('./models/content')
 
 
 const {
@@ -12,8 +13,14 @@ const {
 } = require("./user.js")
 
 mongoose.Promise = global.Promise
-mongoose.connect("mongodb://localhost:27017/users", {
+mongoose.connect("mongodb://localhost:27017/CheckNotes", {
 	useNewUrlParser: true
+})
+
+mongoose.connection.once('open', ()=>{
+	console.log("Connection to CheckNotes database has been successful ")
+}).on('error', (error)=>{
+	console.log('Connection error: ', error);
 })
 
 const urlencoder = bodyparser.urlencoded({
@@ -196,24 +203,64 @@ app.post("/signup", urlencoder, (req, res) => {
 
 app.post("/create_note", urlencoder, (req,res) =>{
 	let title = req.body.note_title;
-	let content = req.body.note_content;
+	let note = req.body.note_content;
+
+	let content = new Content({
+		title, note
+	})
+	
+	content.save().then((doc) => {
+		/// if all goes well
+		console.log(doc)
+		res.render("home.hbs", {
+			username: doc.username
+		})
+	}, (err) => {
+		// if nag fail
+		res.send(err)
+	})
+
 
 
 })
 
 app.post("/create_checklist", urlencoder, (req,res) =>{
 	let title = req.body.cltitle;
+
+	let content = new Content({
+		title, note
+	})
+	
+	content.save().then((doc) => {
+		/// if all goes well
+		console.log(doc)
+		res.render("home.hbs", {
+			username: doc.username
+		})
+	}, (err) => {
+		// if nag fail
+		res.send(err)
+	})
+
+
 })
 
 app.get("/view_note", urlencoder, (req,res)=>{
 	let id = req.body.noteid;
+	Content.findById(id).then((result)=>{
+		console.log(result.title)
+	})
+	
 
 })
 
 app.get("/view_checklist",urlencoder, (req,res)=>{
-
+	let id = req.body.noteid;
+	Content.findById(id).then((result)=>{
+		console.log(result.title)
+})
 })
 
-app.listen(3000, function () {
+app.listen(3001, function () {
 	console.log("port is live");
 });
