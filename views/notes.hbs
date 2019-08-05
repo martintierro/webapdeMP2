@@ -15,18 +15,16 @@
                 <input id="checklists_selection" class="selection" type="submit" value="Checklists">
             </form>
         </ul>
-        <div class="tagDiv">
-            <div class="tagheader">TAGS
-                <input class="addtagButton" type="button" value="ADD">
-            </div>
-            
-            <ul id="tags_container">
-                <form id="tags_list">
-                    <input id="tag" class="selection" type="text" value="School">
-                    <input id="tag" class="selection" type="text" value="Travel">
-                </form>
-            </ul>
+        <div class="tagheader">TAGS
+            <input class="addtagButton" type="button" value="ADD">
         </div>
+
+        <ul id="tags_container">
+            <form id="tags_list">
+                <input id="tag" class="selection" type="text" value="School">
+                <input id="tag" class="selection" type="text" value="Travel">
+            </form>
+        </ul>
     </div>
 
     <!--Header-->
@@ -46,7 +44,7 @@
     <div id="content">
 
         <form class="createpostForm" method="post" action="create_post">
-            <input id="postinput" type="text" placeholder="Create a note or checklist...">
+            <input id="postinput" type="text" placeholder="Create a note...">
             <input class="createpostButton" id="notebutton"type="button" value="NOTE" >
             <input class="createpostButton" id="picbutton" type="button" value="IMAGE">
             <input id='fileid' type='file' accept=".jpg" style="display: none">
