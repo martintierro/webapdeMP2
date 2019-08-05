@@ -51,7 +51,6 @@ app.get("/", function (request, response) {
 	} else {
 		response.render("home.hbs", {
 			username: request.session.username,
-			fontsize: fontsize
 		});
 	}
 });
