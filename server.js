@@ -119,15 +119,6 @@ app.post("/delete", urlencoder, (req, res) => {
 	})
 })
 
-app.post("/preferences", urlencoder, (req, res) => {
-	let fs = req.body.fontsize
-	res.cookie("cookiefontsize", fs, {
-		maxAge: 1000 * 60 * 60 * 24 * 365
-	})
-
-	res.redirect("/")
-})
-
 app.post("/logout",urlencoder,(req,res)=>{
 	req.session.username = null;
 	res.redirect("/");
@@ -207,6 +198,10 @@ app.get("/notes", urlencoder, (req,res)=>{
 
 app.get("/checklists", urlencoder, (req,res)=>{
 	res.render("checklists.hbs");
+})
+
+app.get("/search", urlencoder, (req, res)=>{
+
 })
 
 app.listen(3000, function () {

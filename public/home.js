@@ -24,6 +24,14 @@ $(document).ready(function(){
         on();
     });
 
+    $(".deleteNote").click(function () {
+        $(this).parent().parent().remove();
+    })
+
+    $(".deleteCheckList").click(function () {
+        $(this).parent().parent().remove();
+    })
+
     document.getElementById('picbutton').addEventListener('click', openDialog);
     //button now clicks file button
     function openDialog() {
@@ -85,8 +93,21 @@ $(document).ready(function(){
                 on_editN();
             });
 
+            let delete_button = document.createElement("input");
+            delete_button.type = "button";
+            delete_button.className = "deleteNote";
+            delete_button.value = "DELETE";
+            $(delete_button).click(function (){
+                $(this).parent().parent().remove();
+            });
+
+            let button_container = document.createElement("form");
+            button_container.className = "noteButtons";
+            button_container.append(edit_button);
+            button_container.append(delete_button);
+
             container.append(new_title);
-            container.append(edit_button);
+            container.append(button_container);
             container.append(new_content);
            $("#notescontainer").append(container);
         });
@@ -183,10 +204,25 @@ $(document).ready(function(){
             edit_button.className = "editNote";
             edit_button.value = "EDIT";
             $(edit_button).click(function (){
+                loadNote();
+                on_editN();
             });
 
+            let delete_button = document.createElement("input");
+            delete_button.type = "button";
+            delete_button.className = "deleteNote";
+            delete_button.value = "DELETE";
+            $(delete_button).click(function (){
+                $(this).parent().parent().remove();
+            });
+
+            let button_container = document.createElement("form");
+            button_container.className = "noteButtons";
+            button_container.append(edit_button);
+            button_container.append(delete_button);
+
             container.append(new_title);
-            container.append(edit_button);
+            container.append(button_container);
             container.append(new_form);
             $("#notescontainer").append(container);
         });
