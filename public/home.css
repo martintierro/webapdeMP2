@@ -675,7 +675,7 @@ input[type="checkbox"]:checked:after {
     font-size: 14px;
     position: absolute;
     top: -6px;
-    left:-4px;
+    left:0;
     height: 0;
     width: 0;
 }

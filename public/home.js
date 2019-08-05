@@ -24,6 +24,12 @@ $(document).ready(function(){
         on();
     })
 
+    document.getElementById('picbutton').addEventListener('click', openDialog);
+    //button now clicks file button
+    function openDialog() {
+        document.getElementById('fileid').click();
+    }
+
 
 
     function on() {
