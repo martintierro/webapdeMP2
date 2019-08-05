@@ -46,12 +46,6 @@ app.use(cookieparser())
 
 app.get("/", function (request, response) {
 
-	let fontsize = 12
-
-	if (request.cookies.cookiefontsize) {
-		fontsize = request.cookies.cookiefontsize
-	}
-
 	if (!request.session.username) {
 		response.sendFile(__dirname + "/public/login.html");
 	} else {
@@ -83,12 +77,11 @@ app.post("/login", urlencoder, (req, res) => {
 			res.redirect("/");
 		} else {
 			res.redirect("/")
-
 		}
 	})
 });
 
-app.post("/add", urlencoder, (req, res) => {
+/*app.post("/add", urlencoder, (req, res) => {
 	let username = req.body.user
 	let password = req.body.pass
 
@@ -117,7 +110,7 @@ app.post("/delete", urlencoder, (req, res) => {
 			res.send(doc);
 		}
 	})
-})
+})*/
 
 app.post("/logout",urlencoder,(req,res)=>{
 	req.session.username = null;
@@ -139,7 +132,9 @@ app.post("/signup", urlencoder, (req, res) => {
 			/// if all goes well
 			console.log(doc)
 			res.render("home.hbs", {
-				username: doc.username
+				username: doc.username,
+				title: "Note Title",
+				content: "Note Content"
 			})
 		}, (err) => {
 			// if nag fail
@@ -185,7 +180,7 @@ app.get("/view_checklist",urlencoder, (req,res)=>{
 	let id = req.body.noteid;
 	Content.findById(id).then((result)=>{
 		console.log(result.title)
-})
+	})
 })
 
 app.post("/edit_note", urlencoder, (req, res)=>{
@@ -213,10 +208,13 @@ app.post("/edit_checklist", urlencoder, (req, res)=>{
 app.post("/add_tag", urlencoder, (req, res)=>{
 	let id = req.body.noteid;
 	//let tag = req.body.tag;	IDK HOW IN HBS
+
+
 	Content.findByIdAndUpdate(id, {/*tag*/}).then((result)=>{
 		res.render("home.hbs", {
 			username: doc.username
 			//INSERT HOW TO ADD TAGS AT THE SIDE
+			tags:result
 		})
 	})
 })
@@ -226,19 +224,37 @@ app.get("/home", urlencoder, (req,res)=>{
 })
 
 app.get("/notes", urlencoder, (req,res)=>{
+
+	//get all notes
 	res.render("notes.hbs");
 })
 
 app.get("/checklists", urlencoder, (req,res)=>{
+
+	//get all checklists
 	res.render("checklists.hbs");
 })
 
 app.get("/search", urlencoder, (req, res)=>{
 	let search_query = req.body.search_input;
+
+	//return search results
+	res.render("home.hbs")
 })
 
 app.post("/uploadimage", urlencoder, (req, res)=>{
 	//let image = req.body.image;
+})
+
+app.get("/tag/#",urlencoder,(req,res)=>{
+	let tag = req.body.tag;
+	Content.findById()
+	Content.findById(id, {tag}).then((result)=>{
+		res.render("home.hbs", {
+			username: doc.username
+			posts: result
+		})
+	})
 })
 
 app.listen(3000, function () {
