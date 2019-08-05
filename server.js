@@ -15,7 +15,6 @@ const {
 mongoose.Promise = global.Promise
 
 ///////////TOUCHED
-mongoose.connect("mongodb://localhost:27017/CheckNotes", {
 mongoose.connect("mongodb://localhost:27017/users", {
 	useNewUrlParser: true
 })
