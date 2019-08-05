@@ -84,17 +84,6 @@ app.post("/login", urlencoder, (req, res) => {
 });
 
 
-app.get("/users", (req, res) => {
-	User.find({}, (err, docs) => {
-		if (err) {
-			res.send(err)
-		} else {
-			res.render("admin.hbs", {
-				users: docs
-			})
-		}
-	})
-})
 
 app.post("/add", urlencoder, (req, res) => {
 	let username = req.body.user
@@ -113,36 +102,6 @@ app.post("/add", urlencoder, (req, res) => {
 	})
 })
 
-app.get("/edit", (req, res) => {
-	User.findOne({
-		_id: req.query.id
-	}, (err, doc) => {
-		if (err) {
-			res.send(err)
-		} else {
-			// send all details of the user to edit.hbs
-			res.render("edit.hbs", {
-				user: doc
-			})
-		}
-	})
-})
-
-app.post("/update", urlencoder, (req, res) => {
-	User.updateOne({
-		_id: req.body.id
-	}, {
-		username: req.body.user,
-		password: req.body.pass
-	}, (err, doc) => {
-		if (err) {
-			res.send(err)
-		} else {
-			res.redirect("/users")
-		}
-
-	})
-})
 
 app.post("/delete", urlencoder, (req, res) => {
 	User.deleteOne({
