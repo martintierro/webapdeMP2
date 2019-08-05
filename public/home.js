@@ -3,7 +3,7 @@ window.onscroll = function() {stickyFunction()};
 let header = document.getElementById("HeaderDiv");
 let sticky = header.offsetTop;
 let spanItem, divItem, divCtnr, content, title, note_form, item_input, checkbox, deletebox;
-let label_count=0;
+let tag;
 
 function stickyFunction() {
     if (window.pageYOffset > sticky) {
@@ -26,11 +26,24 @@ $(document).ready(function(){
 
     $(".deleteNote").click(function () {
         $(this).parent().parent().remove();
-    })
+    });
 
     $(".deleteCheckList").click(function () {
         $(this).parent().parent().remove();
-    })
+    });
+
+    $(".addtagButton").click(addTag);
+
+    function addTag(){
+        tag = document.createElement("input");
+        tag.type="text"
+        $(tag).attr("placeholder", "Enter tag...");
+        tag.className = "selection";
+
+        $(tag).hide();
+        $("#tags_list").append(tag);
+        $(tag).show();
+    }
 
     document.getElementById('picbutton').addEventListener('click', openDialog);
     //button now clicks file button
