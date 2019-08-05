@@ -2,7 +2,8 @@ window.onscroll = function() {stickyFunction()};
 
 let header = document.getElementById("HeaderDiv");
 let sticky = header.offsetTop;
-let divItem, divCtnr, content, title, note_form, item_input, checkbox, deletebox;
+let spanItem, divItem, divCtnr, content, title, note_form, item_input, checkbox, deletebox;
+let label_count=0;
 
 function stickyFunction() {
     if (window.pageYOffset > sticky) {
@@ -145,9 +146,6 @@ $(document).ready(function(){
         note_form.append(divCtnr);
         note_form.append(footer)
 
-
-
-
         $(note_form).hide();
         $("#newpost").append(note_form);
         $(note_form).show();
@@ -155,19 +153,20 @@ $(document).ready(function(){
 
     $("#editNote").click(function(){
         loadNote();
-        on_edit();
+        on_editN();
     });
 
-    function on_edit() {
-        document.getElementById("overlay_edit").style.display = "block";
+    function on_editN() {
+        document.getElementById("overlay_editN").style.display = "block";
     }
 
-    $("#background_edit").click(off_edit);
-    function off_edit() {
-        document.getElementById("overlay_edit").style.display = "none";
+    $("#background_editN").click(off_editN);
+    function off_editN() {
+        document.getElementById("overlay_editN").style.display = "none";
     }
 
     function loadNote(){
+        $("#editpost").empty();
         content = document.createElement("textarea");
         $(content).attr("placeholder", "Enter something...");
         $(content).val($("#noteContent").text());
@@ -183,16 +182,14 @@ $(document).ready(function(){
         title.className = "post_title";
         title.name = "note_title";
 
-        console.log($("#noteTitle").text());
-
         save = document.createElement("input");
         save.type = "submit";
         save.value = "SAVE";
         save.id = "savebutton";
 
         note_form = document.createElement("form");
-        note_form.action = "create_note";
-        note_form.method = "POST";
+        note_form.action = "view_note";
+        note_form.method = "GET";
         note_form.id = "noteform";
         note_form.append(title);
         note_form.append(content);
@@ -200,6 +197,81 @@ $(document).ready(function(){
 
         $(note_form).hide();
         $("#editpost").append(note_form);
+        $(note_form).show();
+    }
+
+    $("#editCheckList").click(function(){
+        count();
+        loadCheckList();
+        on_editCL();
+    });
+
+    function on_editCL() {
+        document.getElementById("overlay_editCL").style.display = "block";
+    }
+
+    $("#background_editCL").click(off_editCL);
+    function off_editCL() {
+        document.getElementById("overlay_editCL").style.display = "none";
+    }
+
+    function count(){
+        label_count = $("form#checklistContent>label").length;
+        console.log(label_count);
+    }
+
+    function loadCheckList(){
+        $("#editCL").empty();
+
+        title = document.createElement("input");
+        title.type = "text";
+        $(title).attr("placeholder", "Title");
+        $(title).val($("#checklistTitle").text());
+        title.textContent=$("#checklistTitle").text();
+        title.className = "post_title";
+        title.name = "note_title";
+
+        note_form = document.createElement("form");
+        note_form.action = "view_checklist";
+        note_form.method = "GET";
+        note_form.id = "noteform";
+        note_form.append(title);
+
+        var myControls = $("#checklistContent").find('label.checklistItem');
+        /*document.getElementById("checklistContent").elements['p_id[]'];*/
+        console.log(myControls.length);
+        for (var i = 0; i < myControls.length; i++) {
+            console.log($(myControls[i]).text());
+
+            checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.className = "check_item";
+
+            content = document.createElement("input");
+            content.type = "text";
+            $(content).attr("placeholder", "Enter something...");
+            $(content).val($(myControls[i]).text());
+            content.textContent=$($(myControls[i]).text());
+            content.className = "task";
+            content.name = "note_content";
+
+            spanItem = document.createElement("span");
+            
+            spanItem.append(content);
+            spanItem.append(checkbox);
+
+            note_form.append(spanItem);
+        }        
+
+        save = document.createElement("input");
+        save.type = "submit";
+        save.value = "SAVE";
+        save.id = "savebutton";
+       
+        note_form.append(save);
+
+        $(note_form).hide();
+        $("#editCL").append(note_form);
         $(note_form).show();
     }
 });
