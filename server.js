@@ -261,6 +261,6 @@ app.get("/view_checklist",urlencoder, (req,res)=>{
 })
 })
 
-app.listen(3001, function () {
+app.listen(3000, function () {
 	console.log("port is live");
 });
