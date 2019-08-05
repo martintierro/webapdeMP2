@@ -97,6 +97,12 @@ button:focus {
 input:focus{
     outline:none;
 }
-
-
+#name{
+    color: rgb(0,0,0,.87);
+    font-family: Roboto,sans-serif;
+    font-size: 24pt;
+    font-weight: 200;
+    text-align: center;
+    margin: 0 auto;
+}
 
