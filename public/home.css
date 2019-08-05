@@ -542,7 +542,7 @@ textarea:focus{
 .noteButtons{
     position:relative;
     left: 25px;
-    background-color: blanchedalmond;
+    width: 50px;
 }
 
 .editNote{
@@ -576,11 +576,8 @@ textarea:focus{
 
 .checklistButtons{
     position:relative;
-    top:-220px;
-    left: 210px;
 
     width: 50px;
-    background-color: blanchedalmond;
 }
 
 .editCheckList{
