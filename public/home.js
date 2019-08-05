@@ -9,7 +9,7 @@ function stickyFunction() {
     if (window.pageYOffset > sticky) {
         header.classList.add("sticky");
     } else {
-        header.classList.remove("sticky");
+        //header.classList.remove("sticky");
     }
 }
 
@@ -123,6 +123,7 @@ $(document).ready(function(){
             container.append(button_container);
             container.append(new_content);
            $("#notescontainer").append(container);
+           off();
         });
 
 
@@ -248,6 +249,7 @@ $(document).ready(function(){
             container.append(button_container);
             container.append(new_form);
             $("#notescontainer").append(container);
+            off_editCL();
         });
 
 
@@ -361,6 +363,7 @@ $(document).ready(function(){
         $(save).click(function () {
             parent.find(".noteTitle").text($(title).val());
             parent.find(".noteContent").text($(content).val());
+            off_editN();
         });
 
 
@@ -384,9 +387,7 @@ $(document).ready(function(){
         note_form.append(content);
         note_form.append(footer);
 
-        $(note_form).hide();
         $("#editpost").append(note_form);
-        $(note_form).show();
     }
 
     $(".editCheckList").click(function(){
@@ -522,6 +523,7 @@ $(document).ready(function(){
                 $(form).append(new_row);
                 $(form).append(document.createElement("br"));
             }
+            off_editCL();
         });
 
 
@@ -533,8 +535,7 @@ $(document).ready(function(){
        
         note_form.append(footer);
 
-        $(note_form).hide();
         $("#editCL").append(note_form);
-        $(note_form).show();
+        off_editCL()
     }
 });

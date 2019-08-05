@@ -2,13 +2,14 @@ body{
     background-color:white;
     left:160px;
     margin: 0;
+    max-width:100%;
+    overflow-x: hidden ;
+    height: 100%;
 }
 
 html, body {
     /*width: 91%;*/
-    max-width:100%;
-    overflow-x: auto ;
-    height: 100%
+    min-height: 100%
 }
 
 .header{
@@ -20,13 +21,14 @@ html, body {
     height: 10%;
 
     box-shadow: 0 3px 6px rgba(197, 197, 197, 0.25);
+    z-index: 2;
 }
 
 #content {
     z-index:0;
 
     position: relative;
-    top: 60px;
+    top: 70px;
     left: 200px;
 
     height: 84%;
@@ -119,7 +121,7 @@ html, body {
     position: fixed;
     -webkit-position: sticky;
 
-    z-index: 0;
+    z-index: 1;
     top: 55px;
     left: 0;
 
@@ -203,7 +205,7 @@ ul{
     top: 2%;
     left: 20%;
 
-    height: 9%;
+    height: 50px;
     width: 50%;
 
     display: flex;
