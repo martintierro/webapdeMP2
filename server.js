@@ -168,6 +168,11 @@ app.post("/preferences", urlencoder, (req, res) => {
 	res.redirect("/")
 })
 
+app.post("/logout",urlencoder,(req,res)=>{
+	req.session.username = null;
+	res.redirect("/");
+})
+
 app.post("/signup", urlencoder, (req, res) => {
 	var username = req.body.user
 	var password = req.body.pass
