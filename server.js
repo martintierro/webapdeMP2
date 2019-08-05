@@ -46,18 +46,17 @@ app.use(cookieparser())
 
 app.get("/", function (request, response) {
 
-	let fontsize = 12
+	/*let fontsize = 12
 
 	if (request.cookies.cookiefontsize) {
 		fontsize = request.cookies.cookiefontsize
-	}
+	}*/
 
 	if (!request.session.username) {
 		response.sendFile(__dirname + "/public/login.html");
 	} else {
 		response.render("home.hbs", {
 			username: request.session.username,
-			fontsize: fontsize
 		});
 	}
 });
