@@ -539,7 +539,7 @@ textarea:focus{
     flex-wrap: wrap;
 
     background-color:rgb(255, 173, 230);
-    padding: 5px 20px 5px 20px;
+    padding: 5px 0 20px 20px;
 
     border-radius: 15px;
     transition-property: all;
