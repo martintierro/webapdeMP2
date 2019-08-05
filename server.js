@@ -5,7 +5,7 @@ const session = require("express-session")
 const cookieparser = require("cookie-parser")
 const mongoose = require("mongoose")
 const app = express()
-const Content = require('./models/content')
+const Content = require('./models/content')//TOUCHED
 
 
 const {
@@ -13,6 +13,8 @@ const {
 } = require("./user.js")
 
 mongoose.Promise = global.Promise
+
+///////////TOUCHED
 mongoose.connect("mongodb://localhost:27017/CheckNotes", {
 	useNewUrlParser: true
 })
@@ -22,7 +24,7 @@ mongoose.connection.once('open', ()=>{
 }).on('error', (error)=>{
 	console.log('Connection error: ', error);
 })
-
+/////////////////
 const urlencoder = bodyparser.urlencoded({
 	extended: false
 });
@@ -200,7 +202,7 @@ app.post("/signup", urlencoder, (req, res) => {
 		res.redirect("/signup")
 	}
 })
-
+/////////////////TOUCHED
 app.post("/create_note", urlencoder, (req,res) =>{
 	let title = req.body.note_title;
 	let note = req.body.note_content;
@@ -263,4 +265,7 @@ app.get("/view_checklist",urlencoder, (req,res)=>{
 
 app.listen(3000, function () {
 	console.log("port is live");
+	
 });
+
+////////////////////////////////
