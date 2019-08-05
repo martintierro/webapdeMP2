@@ -21,7 +21,7 @@ $(document).ready(function(){
 
     $("#listbutton").click(function () {
         list_input();
-        on();
+        on_editCL();
     });
 
     $(".deleteNote").click(function () {
@@ -102,7 +102,7 @@ $(document).ready(function(){
             edit_button.className = "editNote";
             edit_button.value = "EDIT";
             $(edit_button).click(function (){
-                loadNote();
+                loadNote(this);
                 on_editN();
             });
 
@@ -153,7 +153,7 @@ $(document).ready(function(){
 
 
     function list_input() {
-        $("#newpost").empty();
+        $("#editCL").empty();
         title = document.createElement("input");
         title.type = "text";
         $(title).attr("placeholder", "Title");
@@ -178,7 +178,6 @@ $(document).ready(function(){
         $(remove).click(function() {
             $(this).parent().remove();
         });
-
 
         checkbox = document.createElement("input");
         checkbox.type = "checkbox";
@@ -228,8 +227,8 @@ $(document).ready(function(){
             edit_button.className = "editNote";
             edit_button.value = "EDIT";
             $(edit_button).click(function (){
-                loadNote();
-                on_editN();
+                loadCheckList(this);
+                on_editCL();
             });
 
             let delete_button = document.createElement("input");
@@ -285,8 +284,9 @@ $(document).ready(function(){
         });
 
         let footer = document.createElement("div");
-        footer.append(add);
+        footer.className = "footer";
         footer.append(save);
+        footer.append(add);
 
         note_form = document.createElement("form");
         note_form.action = "create_list";
@@ -297,12 +297,12 @@ $(document).ready(function(){
         note_form.append(footer);
 
         $(note_form).hide();
-        $("#newpost").append(note_form);
+        $("#editCL").append(note_form);
         $(note_form).show();
     }
 
     $(".editNote").click(function(){
-        loadNote();
+        loadNote(this);
         on_editN();
     });
 
@@ -315,7 +315,7 @@ $(document).ready(function(){
         document.getElementById("overlay_editN").style.display = "none";
     }
 
-    function loadNote(){
+    function loadNote(button){
         $("#editpost").empty();
 
         let noteAddTag = document.createElement("input");
@@ -333,8 +333,10 @@ $(document).ready(function(){
         tagContainer.append(noteTag);
         tagContainer.append(noteAddTag);
         tagContainer.className = "tagContainerN";
-        
-        let text = $(".noteContent").html();
+
+        let parent = $(button).parent().parent();
+
+        let text = parent.find(".noteContent").html();
         let withBL = text.split('<br>').join('\n');
 
         content = document.createElement("textarea");
@@ -347,7 +349,7 @@ $(document).ready(function(){
         title = document.createElement("input");
         title.type = "text";
         $(title).attr("placeholder", "Title");
-        $(title).val($(".noteTitle").text());
+        $(title).val($(parent).find(".noteTitle").text());
         title.textContent=$(".noteTitle").text();
         title.className = "post_title";
         title.name = "note_title";
@@ -356,6 +358,11 @@ $(document).ready(function(){
         save.type = "button";
         save.value = "SAVE";
         save.id = "savebutton";
+        $(save).click(function () {
+            parent.find(".noteTitle").text($(title).val());
+            parent.find(".noteContent").text($(content).val());
+        });
+
 
         let file_button = document.createElement("input");
         file_button.type = "button";
@@ -384,7 +391,7 @@ $(document).ready(function(){
 
     $(".editCheckList").click(function(){
         count();
-        loadCheckList();
+        loadCheckList(this);
         on_editCL();
     });
 
@@ -402,14 +409,16 @@ $(document).ready(function(){
         console.log(label_count);
     }
 
-    function loadCheckList(){
+    function loadCheckList(button){
         $("#editCL").empty();
+
+        let parent = $(button).parent().parent();
 
         title = document.createElement("input");
         title.type = "text";
         $(title).attr("placeholder", "Title");
-        $(title).val($(".checklistTitle").text());
-        title.textContent=$(".checklistTitle").text();
+        $(title).val(parent.find(".checklistTitle").text());
+        title.textContent=parent.find(".checklistTitle").text();
         title.className = "post_title";
         title.name = "note_title";
 
@@ -419,8 +428,8 @@ $(document).ready(function(){
         note_form.id = "noteform";
         note_form.append(title);
 
-        let myControls = $(".checklistContent").find('label.checklistItem');
-        let checkboxes = $(".checklistContent").find("input");
+        let myControls = parent.find(".checklistContent").find('label.checklistItem');
+        let checkboxes = parent.find(".checklistContent").find("input");
         /*document.getElementById("checklistContent").elements['p_id[]'];*/
         console.log(myControls.length);
         for (var i = 0; i < myControls.length; i++) {
@@ -448,7 +457,6 @@ $(document).ready(function(){
                 $(this).parent().remove();
             });
 
-            
             spanItem.append(checkbox);
             spanItem.append(content);
             spanItem.append(remove);
@@ -495,10 +503,33 @@ $(document).ready(function(){
         save.type = "button";
         save.value = "SAVE";
         save.id = "savebutton";
+        $(save).click(function () {
+            parent.find(".checklistTitle").text($(title).val());
+            let form = parent.find(".checklistContent");
+            form.empty();
+            let myControls = $("#editCL").find('input.task');
+            let checkboxes = $("#editCL").find("input.check_item");
+            for (let i = 0; i < myControls.length ; i++) {
+                let new_row = document.createElement("label");
+                let new_checkbox = document.createElement("input");
+                new_checkbox.type = "checkbox";
+                if(checkboxes[i].checked)
+                    new_checkbox.checked = true;
+                new_row.className = "checklistItem";
+                new_row.name = "p_id[]";
+                new_row.innerHTML = myControls[i].value;
+                $(new_row).prepend(new_checkbox);
+                $(form).append(new_row);
+                $(form).append(document.createElement("br"));
+            }
+        });
+
+
 
         let footer = document.createElement("div");
-        footer.append(add);
+        footer.className = "footer";
         footer.append(save);
+        footer.append(add);
        
         note_form.append(footer);
 
