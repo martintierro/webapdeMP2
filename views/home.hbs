@@ -17,10 +17,15 @@
                 <input class="selection" type="submit" value="Checklists">
             </form>
         </ul>
-        <div class="tagheader">TAGS</div>
+        <div class="tagheader">TAGS
+            <input class="addtagButton" type="button" value="ADD">
+        </div>
+        
         <ul id="tags_container">
-            <li class="selection">School</li>
-            <li class="selection">Travel</li>
+            <form id="tags_list">
+                <input class="selection" type="text" value="School">
+                <input class="selection" type="text" value="Travel">
+            </form>
         </ul>
     </div>
 
@@ -32,7 +37,7 @@
         <h2 class="name">CheckNotes</h2>
         
         <form class="searchForm" method="GET">
-            <input class="searchBar" type="text" placeholder="Search">
+            <input id="search_input" class="searchBar" type="text" placeholder="Search">
         </form>
         
         <!--<img class="logoutIcon" src="Checkbox Icon.svg">-->
