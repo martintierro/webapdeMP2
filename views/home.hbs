@@ -10,8 +10,12 @@
     <!--Side Navigation-->
     <div class="sidenav">
         <ul>
-            <li class="selection">Notes</li>
-            <li class="selection">Checklists</li>
+            <form action="notes" method="GET">
+                <input class="selection" type="submit" value="Notes">
+            </form>
+            <form action="checklists" method="GET">
+                <input class="selection" type="submit" value="Checklists">
+            </form>
         </ul>
         <div class="tagheader">TAGS</div>
         <ul id="tags_container">
@@ -65,14 +69,15 @@
         <div id="notescontainer">
             <div class="noteDiv">
                 <p class="noteTitle">Restaurants to Try</p>
+                <input class="editNote" type="button" value="EDIT">
                 <p class="noteContent">Oficina do Duque<br>Calcada do Duque 43 A 1200-155, Lisbon 1200-155, Portugal<br>PP-PPP Mediterranean, European, Portuguese<br>4.5<br>3 min Walk<br><br>Boa-Bao<br>Largo Raphael Bordalo Pinheiro Chiado, Lisbon 1200-369, Portugal<br>PP-PPP Asian Thai, Vietnames<br>4.5<br>3 min Walk</p>
 
-                <input class="editNote" type="button" value="EDIT">
+
             </div>
 
-            <div id="checklistDiv">
-                <p id="checklistTitle">Upcoming Schoolwork</p>
-                <form id="checklistContent">
+            <div class="checklistDiv">
+                <p class="checklistTitle">Upcoming Schoolwork</p>
+                <form class="checklistContent">
                     <label class="checklistItem" name="p_id[]"><input type="checkbox">HCIFACE DJ4 - August 5</label><br>
                     <label class="checklistItem" name="p_id[]"><input type="checkbox">WEBAPDE Phase 2 - August 6</label><br>
                     <label class="checklistItem" name="p_id[]"><input type="checkbox">INTR-OS miniP2 - August 7</label><br>
@@ -83,7 +88,7 @@
                     <label class="checklistItem" name="p_id[]"><input type="checkbox">SOCTEC2 Presentation - August 9</label><br>
                 </form>
 
-                <input id="editCheckList" type="button" value="EDIT">
+                <input class="editCheckList" type="button" value="EDIT">
             </div>
         </div>
     </div>

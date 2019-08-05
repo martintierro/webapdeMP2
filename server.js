@@ -52,7 +52,6 @@ app.get("/", function (request, response) {
 		fontsize = request.cookies.cookiefontsize
 	}
 
-
 	if (!request.session.username) {
 		response.sendFile(__dirname + "/public/login.html");
 	} else {
@@ -69,10 +68,8 @@ app.get("/signuppage", (req, res) => {
 })
 
 app.post("/login", urlencoder, (req, res) => {
-
 	let username = req.body.user;
 	let password = req.body.pass;
-
 
 	User.findOne({
 		username,
@@ -89,10 +86,7 @@ app.post("/login", urlencoder, (req, res) => {
 
 		}
 	})
-
 });
-
-
 
 app.post("/add", urlencoder, (req, res) => {
 	let username = req.body.user
@@ -111,7 +105,6 @@ app.post("/add", urlencoder, (req, res) => {
 	})
 })
 
-
 app.post("/delete", urlencoder, (req, res) => {
 	User.deleteOne({
 		_id: req.body.id
@@ -125,7 +118,6 @@ app.post("/delete", urlencoder, (req, res) => {
 		}
 	})
 })
-
 
 app.post("/preferences", urlencoder, (req, res) => {
 	let fs = req.body.fontsize
@@ -171,24 +163,6 @@ app.post("/signup", urlencoder, (req, res) => {
 app.post("/create_note", urlencoder, (req,res) =>{
 	let title = req.body.note_title;
 	let content = req.body.note_content;
-
-	let Content = new Content({
-		title, content
-	})
-	
-	content.save().then((doc) => {
-		/// if all goes well
-		console.log(doc)
-		res.render("home.hbs", {
-			username: doc.username
-		})
-	}, (err) => {
-		// if nag fail
-		res.send(err)
-	})
-
-
-
 })
 
 app.post("/create_checklist", urlencoder, (req,res) =>{
@@ -214,11 +188,6 @@ app.post("/create_checklist", urlencoder, (req,res) =>{
 
 app.get("/view_note", urlencoder, (req,res)=>{
 	let id = req.body.noteid;
-	Content.findById(id).then((result)=>{
-		console.log(result.title)
-	})
-	
-
 })
 
 app.get("/view_checklist",urlencoder, (req,res)=>{
@@ -226,6 +195,18 @@ app.get("/view_checklist",urlencoder, (req,res)=>{
 	Content.findById(id).then((result)=>{
 		console.log(result.title)
 })
+})
+
+app.get("/home", urlencoder, (req,res)=>{
+	res.render("home.hbs");
+})
+
+app.get("/notes", urlencoder, (req,res)=>{
+	res.render("notes.hbs");
+})
+
+app.get("/checklists", urlencoder, (req,res)=>{
+	res.render("checklists.hbs");
 })
 
 app.listen(3000, function () {

@@ -7,7 +7,7 @@ body{
 html, body {
     /*width: 91%;*/
     max-width:100%;
-    overflow-x: auto ;
+    overflow-x: hidden;
     height: 100%
 }
 
@@ -22,7 +22,7 @@ html, body {
     box-shadow: 0 3px 6px rgba(197, 197, 197, 0.25);
 }
 
-#content {
+.content {
     z-index:0;
 
     position: relative;
@@ -32,25 +32,17 @@ html, body {
     height: 84%;
     width: 78%;
 
-    /*border:tomato solid;*/
     padding: 16px;
     overflow: hidden;
 
     font-family: Roboto;
-
-}
-
-#notescontainer{
-    margin-top: 20px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
 }
 
 .sticky {
     position: fixed;
     top: 0;
     left: 0;
+
     width: 100%;
 }
 
@@ -152,6 +144,25 @@ html, body {
     border-radius: 0 25px 25px 0;
 }
 
+#notes_selection{
+    position: relative;
+    top: -15px;
+    background-color: #ffd0004d;
+    border: 0px;
+    border-radius: 0 25px 25px 0;
+    color: black;
+}
+
+#checklists_selection{
+    position: relative;
+    top: -15px;
+}
+
+.tagDiv{
+    position: relative;
+    top: -15px;
+}
+
 .tagheader{
     padding: 20px 8px 8px 15px;
     letter-spacing: .07272727em;
@@ -175,8 +186,6 @@ ul{
     padding: 0;
     margin-top: 0;
 }
-
-
 
 .createpostForm{
     position: relative;
@@ -251,7 +260,6 @@ ul{
     left: 0;
     right: 0;
     bottom: 0;
-    /*background-color: rgba(248, 252, 230, 0.315);*/
     z-index: 2;
     cursor: pointer;
 }
@@ -293,13 +301,7 @@ textarea:focus{
 }
 
 .post_title_container{
-    /*top: 3%;
-    left: 5%;*/
-
-    /*background-color: red;*/
     background-color: rgba(255, 255, 255, 0);
-
-
 }
 
 .post_title{
@@ -338,7 +340,7 @@ textarea:focus{
 #savebutton{
     float: right;
     margin-right: 10px;
-    margin-top: 10px;
+    margin-top: 260px;
     background: transparent;
     border: rgba(0, 0, 0, 0.6) solid;
     border-radius: 5px;
@@ -357,72 +359,13 @@ textarea:focus{
     background-color: rgb(189, 189, 189);
 }
 
-.iteminput{
-    width: 75%;
-    height: 9%;
-    padding-left: 5%;
-
-    border:0;
-
-    background-color: transparent;
-}
-
-.item_container{
-    width: 100%;
-    margin: 3px;
-}
-
-.remove{
-    float: right;
-    margin-right: 10px;
-    background: transparent;
-    border-radius: 5px;
-    font-family: Roboto, sans-serif;
-    font-size: 8pt;
-    color: rgb(0, 0, 0, 0.6);
-    font-weight:500;
-    height: 6%;
-    transition-property: all;
-    transition-duration: 0.5s;
-    transition-timing-function:ease;
-    padding: 1px;
-}
-
-.remove:hover{
-    color: rgb(0, 0, 0, 0.87);
-}
-
-.add{
-    float: left;
-    margin-left: 10px;
-    margin-top: 10px;
-    background: transparent;
-    border-radius: 5px;
-    font-family: Roboto, sans-serif;
-    font-size: 8pt;
-    color: rgb(0, 0, 0,0.6);
-    font-weight:500;
-    padding: 5px;
-    transition-property: all;
-    transition-duration: 0.5s;
-    transition-timing-function:ease;
-}
-
-.add:hover{
-    color: rgb(0, 0, 0,0.87);
-}
-
-.noteDiv{
+#noteDiv{
     position: relative;
-
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    top: 10%;
+    left: 5%;
 
     height: 45%;
     width: 25%;
-
-    margin: 5px;
 
     background-color:rgb(255, 226, 61);
     padding: 5px 20px 5px 20px;
@@ -433,24 +376,21 @@ textarea:focus{
     transition-timing-function:ease;
 }
 
-.noteDiv:hover{
+#noteDiv:hover{
     background-color: rgb(245, 218, 63);
     box-shadow: 0 3px 6px rgb(50, 50, 50, 0.25);
 }
 
-.noteTitle{
+#noteTitle{
     font-size: 12pt;
     font-weight: 500;
-    width: 75%;
 }
 
-.noteContent{
+#noteContent{
     height: 67%;
     width: 100%;
 
     font-size: 10pt;
-    /*overflow: hidden;
-    text-overflow: ellipsis;*/
 
     display: -webkit-box;
     -webkit-line-clamp: 9;
@@ -459,103 +399,17 @@ textarea:focus{
     text-overflow: ellipsis;
 }
 
-/*.noteContent:after{
-    content: '...';
-    position: absolute;
-}*/
-
-/*.overflow {
-    --max-lines: 3;
+#editNote{
     position: relative;
-    max-height: calc(var(--lh) * var(--max-lines));
-    overflow: hidden;
-    padding-right: 1rem;
-}
-
-.overflow::before {
-    position: absolute;
-    content: "...";
-    bottom: 0;
-    right: 50px;
-}
-
-.overflow::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    width: 1rem;
-    height: 1rem;
-    background: white;
-}*/
-
-.checklistDiv{
-    position: relative;
-    height: 45%;
-    width: 25%;
-    margin: 5px;
-
-    background-color:rgb(255, 173, 230);
-    padding: 5px 20px 5px 20px;
-
-    border-radius: 15px;
-    transition-property: all;
-    transition-duration: 0.5s;
-    transition-timing-function:ease;
-}
-
-.checklistDiv:hover{
-    background-color: rgb(245, 167, 220);
-    box-shadow: 0 3px 6px rgb(50, 50, 50, 0.25);
-}
-
-
-.checklistTitle{
-    font-size: 12pt;
-    font-weight: 500;
-}
-
-.checklistContent{
-    height: 66%;
-    width: 100%;
-
-    font-size: 10pt;
-
-    display: -webkit-box;
-    -webkit-line-clamp: 7;
-    -webkit-box-orient:vertical;
-    /*white-space: nowrap;*/
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.checklistItem{
-    display: inline-block;
-    padding-left: 1.7em;
-    text-indent: -1.7em;
-}
-
-.editNote{
-    position: relative;
-    width: 20%;
-    background-color:rgba(240, 230, 140, 0);
-    border: 0px;
-}
-
-.editNote:hover{
-    color: rgb(255, 136, 0);
-}
-
-.editCheckList{
-    position: relative;
-    top:-198px;
+    top:-215px;
     left: 87%;
 
     background-color:rgba(240, 230, 140, 0);
     border: 0px;
 }
 
-.editCheckList:hover{
-    color: rgb(255, 0, 64);
+#editNote:hover{
+    color: rgb(255, 136, 0);
 }
 
 #overlay_editN{
@@ -598,97 +452,4 @@ textarea:focus{
     background-color: rgb(255, 245, 145);
 
     border-radius: 15px;
-}
-
-#overlay_editCL{
-    position: fixed;
-    display: none;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 2;
-    cursor: pointer;
-    background-color: rgba(248, 252, 230, 0.315);
-}
-
-#background_editCL{
-    position: fixed;
-    display: block;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(248, 252, 230, 0.315);
-    z-index: 2;
-    cursor: pointer;
-}
-
-#editCL{
-    z-index: 3;
-    position: relative;
-    /*width: 25%;*/
-    width: 500px;
-    height: 60%;
-
-    margin: auto;
-    top: 15%;
-    background-color:rgb(255, 173, 230);
-
-    border-radius: 15px;
-}
-
-.check_item{
-    position: relative;
-    left: 10px ;
-}
-
-.task{
-    position: relative;
-    left: 5%;
-
-    width: 75%;
-    height: 5%;
-
-
-    background-color: rgba(255, 255, 255, 0);
-    border: 0;
-    font-family: Roboto, sans-serif;
-    font-size: 10pt;
-}
-
-input[type="checkbox"] {
-    -webkit-appearance: none;
-    background-color: transparent;
-    border: 1px solid rgba(0,0,0,.6);
-    top:3px;
-    padding: 5px;
-    border-radius: 3px;
-    display: inline-flex;
-    position: relative;
-}
-
-input[type="checkbox"] :active, input[type="checkbox"] :checked:active {
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
-}
-
-input[type="checkbox"] :checked {
-    background-color: #e9ecee;
-    border: 1px solid #adb8c0;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
-    color: #99a1a7;
-}
-
-input[type="checkbox"]:checked:after {
-    content: '\2714';
-    font-size: 14px;
-    position: absolute;
-    top: -6px;
-    left:0;
-    height: 0;
-    width: 0;
 }

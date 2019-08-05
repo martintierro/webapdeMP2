@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="jquery.min.js"> </script>
+    <link rel="stylesheet" type="text/css" href="/checklists.css">
+</head>
+
+<body>
+    <!--Side Navigation-->
+    <div class="sidenav">
+        <ul>
+            <form action="home" method="GET">
+                <input class="selection" type="submit" value="View All">
+            </form>
+            <form action="notes" method="GET">
+                <input class="selection" type="submit" value="Notes">
+            </form>
+            <input id="checklists_selection" class="selection" type="submit" value="Checklists">
+        </ul>
+        <div class="tagheader">TAGS</div>
+        <ul id="tags_container">
+            <li class="selection">School</li>
+            <li class="selection">Travel</li>
+        </ul>
+    </div>
+
+    <!--Header-->
+    <div class="header sticky" id="HeaderDiv">
+        <form action="logout" method="POST" id="logoutform">
+            <input type="submit" value="Sign out" id="logout">
+        </form>
+        <h2 class="name">CheckNotes</h2>
+        
+        <form class="searchForm" method="GET">
+            <input class="searchBar" type="text" placeholder="Search">
+        </form>
+    </div>
+
+    <!--Page Content-->
+    <div class="content">
+        <form class="createpostForm" method="post" action="create_post">
+            <input id="postinput" type="text" placeholder="Create a note or checklist...">
+            <input class="createpostButton" id="listbutton" type="button" value="CHECKLIST">
+            <input id='fileid' type='file' accept=".jpg" style="display: none">
+        </form>
+
+        <div id="checklistDiv">
+            <p id="checklistTitle">Upcoming Schoolwork</p>
+            <form id="checklistContent">
+                <label class="checklistItem" name="p_id[]"><input type="checkbox">HCIFACE DJ4 - August 5</label><br>
+                <label class="checklistItem" name="p_id[]"><input type="checkbox">WEBAPDE Phase 2 - August 6</label><br>
+                <label class="checklistItem" name="p_id[]"><input type="checkbox">INTR-OS miniP2 - August 7</label><br>
+                <label class="checklistItem" name="p_id[]"><input type="checkbox">AUTOMAT Problem Set 4 - August 8</label><br>
+                <label class="checklistItem" name="p_id[]"><input type="checkbox">WEBPAPDE Mini Challenge 5 - August 8</label><br>
+                <label class="checklistItem" name="p_id[]"><input type="checkbox">INTR-OS Exam - August 9</label><br>
+                <label class="checklistItem" name="p_id[]"><input type="checkbox">HCIFACE Exam - August 9</label><br>
+                <label class="checklistItem" name="p_id[]"><input type="checkbox">SOCTEC2 Presentation - August 9</label><br>
+            </form>
+
+            <input id="editCheckList" type="button" value="EDIT">
+        </div>
+    </div>
+
+    <!--Overlay-->
+    <div id="overlay">
+        <div id="background"></div>
+        <div id="newpost">
+        </div>
+    </div>
+
+    <div id="overlay_editCL">
+        <div id="background_editCL"></div>
+        <div id="editCL">
+        </div>
+    </div>
+
+    <script src="checklists.js"></script>
+</body>
+
+</html>

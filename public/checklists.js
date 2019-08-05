@@ -14,23 +14,10 @@ function stickyFunction() {
 }
 
 $(document).ready(function(){
-    $("#notebutton").click(function(){
-        note_input();
-        on();
-    });
-
     $("#listbutton").click(function () {
         list_input();
         on();
-    });
-
-    document.getElementById('picbutton').addEventListener('click', openDialog);
-    //button now clicks file button
-    function openDialog() {
-        document.getElementById('fileid').click();
-    }
-
-
+    })
 
     function on() {
         document.getElementById("overlay").style.display = "block";
@@ -40,72 +27,6 @@ $(document).ready(function(){
     function off() {
         document.getElementById("overlay").style.display = "none";
     }
-
-    function note_input(){
-        $("#newpost").empty();
-
-        content = document.createElement("textarea");
-        $(content).attr("placeholder", "Enter something...");
-        $(content).val($("#postinput").val());
-        content.textContent=$("#postinput").val();
-        content.className = "post_content";
-        content.name = "note_content";
-
-        title = document.createElement("input");
-        title.type = "text";
-        $(title).attr("placeholder", "Title");
-        title.className = "post_title";
-        title.name = "note_title";
-
-        save = document.createElement("input");
-        save.type = "button";
-        save.value = "SAVE";
-        save.id = "savebutton";
-        $(save).click(function () {
-
-            let container = document.createElement("div");
-            container.className = "noteDiv";
-
-            let new_title = document.createElement("p");
-            new_title.className = "noteTitle";
-            $(new_title).val($(title).val());
-            new_title.textContent=$(title).val();
-
-            let new_content = document.createElement("p");
-            new_content.className = "noteContent";
-            $(new_content).val($(content).val());
-            new_content.textContent=$(content).val();
-
-            let edit_button = document.createElement("input");
-            edit_button.type = "button";
-            edit_button.className = "editNote";
-            edit_button.value = "EDIT";
-            $(edit_button).click(function (){
-                loadNote();
-                on_editN();
-            });
-
-            container.append(new_title);
-            container.append(edit_button);
-            container.append(new_content);
-           $("#notescontainer").append(container);
-        });
-
-
-        note_form = document.createElement("form");
-        note_form.action = "create_note";
-        note_form.method = "POST";
-        note_form.id = "noteform";
-        note_form.append(title);
-        note_form.append(content);
-        note_form.append(save);
-
-        $(note_form).hide();
-        $("#newpost").append(note_form);
-        $(note_form).show();
-
-    }
-
 
     function list_input() {
         $("#newpost").empty();
@@ -144,12 +65,9 @@ $(document).ready(function(){
         divCtnr.append(remove);
 
         save = document.createElement("input");
-        save.type = "button";
+        save.type = "submit";
         save.value = "SAVE";
         save.id = "savebutton";
-        $(save).click(function () {
-
-        });
 
 
         let add = document.createElement("div");
@@ -194,67 +112,14 @@ $(document).ready(function(){
         note_form.id = "noteform";
         note_form.append(title);
         note_form.append(divCtnr);
-        note_form.append(footer);
+        note_form.append(footer)
 
         $(note_form).hide();
         $("#newpost").append(note_form);
         $(note_form).show();
     }
 
-    $(".editNote").click(function(){
-        loadNote();
-        on_editN();
-    });
-
-    function on_editN() {
-        document.getElementById("overlay_editN").style.display = "block";
-    }
-
-    $("#background_editN").click(off_editN);
-    function off_editN() {
-        document.getElementById("overlay_editN").style.display = "none";
-    }
-
-    function loadNote(){
-        $("#editpost").empty();
-        
-        let text = $(".noteContent").html();
-        let withBL = text.split('<br>').join('\n');
-
-        content = document.createElement("textarea");
-        $(content).attr("placeholder", "Enter something...");
-        $(content).val(withBL);
-        content.textContent = withBL;
-        content.className = "post_content";
-        content.name = "note_content";
-
-        title = document.createElement("input");
-        title.type = "text";
-        $(title).attr("placeholder", "Title");
-        $(title).val($("#noteTitle").text());
-        title.textContent=$("#noteTitle").text();
-        title.className = "post_title";
-        title.name = "note_title";
-
-        save = document.createElement("input");
-        save.type = "button";
-        save.value = "SAVE";
-        save.id = "savebutton";
-
-        note_form = document.createElement("form");
-        note_form.action = "view_note";
-        note_form.method = "GET";
-        note_form.id = "noteform";
-        note_form.append(title);
-        note_form.append(content);
-        note_form.append(save);
-
-        $(note_form).hide();
-        $("#editpost").append(note_form);
-        $(note_form).show();
-    }
-
-    $(".editCheckList").click(function(){
+    $("#editCheckList").click(function(){
         count();
         loadCheckList();
         on_editCL();
@@ -291,8 +156,7 @@ $(document).ready(function(){
         note_form.id = "noteform";
         note_form.append(title);
 
-        let myControls = $(".checklistContent").find('label.checklistItem');
-        let checkboxes = $(".checklistContent").find("input");
+        var myControls = $("#checklistContent").find('label.checklistItem');
         /*document.getElementById("checklistContent").elements['p_id[]'];*/
         console.log(myControls.length);
         for (var i = 0; i < myControls.length; i++) {
@@ -301,8 +165,7 @@ $(document).ready(function(){
             checkbox = document.createElement("input");
             checkbox.type = "checkbox";
             checkbox.className = "check_item";
-            if(checkboxes[i].checked)
-                checkbox.checked = true;
+
             content = document.createElement("input");
             content.type = "text";
             $(content).attr("placeholder", "Enter something...");
@@ -364,7 +227,7 @@ $(document).ready(function(){
 
 
         save = document.createElement("input");
-        save.type = "button";
+        save.type = "submit";
         save.value = "SAVE";
         save.id = "savebutton";
 
