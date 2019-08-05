@@ -35,7 +35,19 @@
     </div>
 
     <!--Page Content-->
-    <div class="content">
+
+
+    <div id="content">
+
+        <form class="createpostForm" method="post" action="create_post">
+            <input id="postinput" type="text" placeholder="Create a note or checklist...">
+            <input class="createpostButton" id="notebutton"type="button" value="NOTE" >
+            <input class="createpostButton" id="listbutton" type="button" value="CHECKLIST">
+            <input class="createpostButton" id="picbutton" type="button" value="PIC">
+            <input id='fileid' type='file' accept=".jpg" style="display: none">
+        </form>
+
+
         <!--Welcome {{username}}!
         <br>
         <br>
@@ -49,35 +61,30 @@
             </form>
         </div>-->
 
-        <form class="createpostForm" method="post" action="create_post">
-            <input id="postinput" type="text" placeholder="Create a note or checklist...">
-            <input class="createpostButton" id="notebutton"type="button" value="NOTE" >
-            <input class="createpostButton" id="listbutton" type="button" value="CHECKLIST">
-            <input class="createpostButton" id="picbutton" type="button" value="PIC">
-            <input id='fileid' type='file' accept=".jpg" style="display: none">
-        </form>
 
-        <div id="noteDiv">
-            <p id="noteTitle">Restaurants to Try</p>
-            <p id="noteContent">Oficina do Duque<br>Calcada do Duque 43 A 1200-155, Lisbon 1200-155, Portugal<br>PP-PPP Mediterranean, European, Portuguese<br>4.5<br>3 min Walk<br><br>Boa-Bao<br>Largo Raphael Bordalo Pinheiro Chiado, Lisbon 1200-369, Portugal<br>PP-PPP Asian Thai, Vietnames<br>4.5<br>3 min Walk</p>
+        <div id="notescontainer">
+            <div class="noteDiv">
+                <p class="noteTitle">Restaurants to Try</p>
+                <p class="noteContent">Oficina do Duque<br>Calcada do Duque 43 A 1200-155, Lisbon 1200-155, Portugal<br>PP-PPP Mediterranean, European, Portuguese<br>4.5<br>3 min Walk<br><br>Boa-Bao<br>Largo Raphael Bordalo Pinheiro Chiado, Lisbon 1200-369, Portugal<br>PP-PPP Asian Thai, Vietnames<br>4.5<br>3 min Walk</p>
 
-            <input id="editNote" type="button" value="EDIT">
-        </div>
+                <input class="editNote" type="button" value="EDIT">
+            </div>
 
-        <div id="checklistDiv">
-            <p id="checklistTitle">Upcoming Schoolwork</p>
-            <form id="checklistContent">
-                <label class="checklistItem" name="p_id[]"><input type="checkbox">HCIFACE DJ4 - August 5</label><br>
-                <label class="checklistItem" name="p_id[]"><input type="checkbox">WEBAPDE Phase 2 - August 6</label><br>
-                <label class="checklistItem" name="p_id[]"><input type="checkbox">INTR-OS miniP2 - August 7</label><br>
-                <label class="checklistItem" name="p_id[]"><input type="checkbox">AUTOMAT Problem Set 4 - August 8</label><br>
-                <label class="checklistItem" name="p_id[]"><input type="checkbox">WEBPAPDE Mini Challenge 5 - August 8</label><br>
-                <label class="checklistItem" name="p_id[]"><input type="checkbox">INTR-OS Exam - August 9</label><br>
-                <label class="checklistItem" name="p_id[]"><input type="checkbox">HCIFACE Exam - August 9</label><br>
-                <label class="checklistItem" name="p_id[]"><input type="checkbox">SOCTEC2 Presentation - August 9</label><br>
-            </form>
+            <div id="checklistDiv">
+                <p id="checklistTitle">Upcoming Schoolwork</p>
+                <form id="checklistContent">
+                    <label class="checklistItem" name="p_id[]"><input type="checkbox">HCIFACE DJ4 - August 5</label><br>
+                    <label class="checklistItem" name="p_id[]"><input type="checkbox">WEBAPDE Phase 2 - August 6</label><br>
+                    <label class="checklistItem" name="p_id[]"><input type="checkbox">INTR-OS miniP2 - August 7</label><br>
+                    <label class="checklistItem" name="p_id[]"><input type="checkbox">AUTOMAT Problem Set 4 - August 8</label><br>
+                    <label class="checklistItem" name="p_id[]"><input type="checkbox">WEBPAPDE Mini Challenge 5 - August 8</label><br>
+                    <label class="checklistItem" name="p_id[]"><input type="checkbox">INTR-OS Exam - August 9</label><br>
+                    <label class="checklistItem" name="p_id[]"><input type="checkbox">HCIFACE Exam - August 9</label><br>
+                    <label class="checklistItem" name="p_id[]"><input type="checkbox">SOCTEC2 Presentation - August 9</label><br>
+                </form>
 
-            <input id="editCheckList" type="button" value="EDIT">
+                <input id="editCheckList" type="button" value="EDIT">
+            </div>
         </div>
     </div>
 

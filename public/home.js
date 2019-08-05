@@ -58,9 +58,40 @@ $(document).ready(function(){
         title.name = "note_title";
 
         save = document.createElement("input");
-        save.type = "submit";
+        save.type = "button";
         save.value = "SAVE";
         save.id = "savebutton";
+        $(save).click(function () {
+
+            let container = document.createElement("div");
+            container.className = "noteDiv";
+
+            let new_title = document.createElement("p");
+            new_title.className = "noteTitle";
+            $(new_title).val($(title).val());
+            new_title.textContent=$(title).val();
+
+            let new_content = document.createElement("p");
+            new_content.className = "noteContent";
+            $(new_content).val($(content).val());
+            new_content.textContent=$(content).val();
+
+            let edit_button = document.createElement("input");
+            edit_button.type = "button";
+            edit_button.className = "editNote";
+            edit_button.value = "EDIT";
+            $(edit_button).click(function (){
+                loadNote();
+                on_editN();
+            });
+
+            container.append(new_title);
+            container.append(new_content);
+            container.append(edit_button);
+
+           $("#notescontainer").append(container);
+        });
+
 
         note_form = document.createElement("form");
         note_form.action = "create_note";
@@ -75,6 +106,7 @@ $(document).ready(function(){
         $(note_form).show();
 
     }
+
 
     function list_input() {
         $("#newpost").empty();
@@ -113,9 +145,10 @@ $(document).ready(function(){
         divCtnr.append(remove);
 
         save = document.createElement("input");
-        save.type = "submit";
+        save.type = "button";
         save.value = "SAVE";
         save.id = "savebutton";
+        $(save).click(add_list);
 
 
         let add = document.createElement("div");
@@ -167,7 +200,7 @@ $(document).ready(function(){
         $(note_form).show();
     }
 
-    $("#editNote").click(function(){
+    $(".editNote").click(function(){
         loadNote();
         on_editN();
     });
@@ -184,7 +217,7 @@ $(document).ready(function(){
     function loadNote(){
         $("#editpost").empty();
         
-        let text = $("#noteContent").html();
+        let text = $(".noteContent").html();
         let withBL = text.split('<br>').join('\n');
 
         content = document.createElement("textarea");
@@ -203,7 +236,7 @@ $(document).ready(function(){
         title.name = "note_title";
 
         save = document.createElement("input");
-        save.type = "submit";
+        save.type = "button";
         save.value = "SAVE";
         save.id = "savebutton";
 
@@ -257,7 +290,8 @@ $(document).ready(function(){
         note_form.id = "noteform";
         note_form.append(title);
 
-        var myControls = $("#checklistContent").find('label.checklistItem');
+        let myControls = $("#checklistContent").find('label.checklistItem');
+        let checkboxes = $("#checklistContent").find("input");
         /*document.getElementById("checklistContent").elements['p_id[]'];*/
         console.log(myControls.length);
         for (var i = 0; i < myControls.length; i++) {
@@ -266,7 +300,8 @@ $(document).ready(function(){
             checkbox = document.createElement("input");
             checkbox.type = "checkbox";
             checkbox.className = "check_item";
-
+            if(checkboxes[i].checked)
+                checkbox.checked = true;
             content = document.createElement("input");
             content.type = "text";
             $(content).attr("placeholder", "Enter something...");
@@ -328,7 +363,7 @@ $(document).ready(function(){
 
 
         save = document.createElement("input");
-        save.type = "submit";
+        save.type = "button";
         save.value = "SAVE";
         save.id = "savebutton";
 

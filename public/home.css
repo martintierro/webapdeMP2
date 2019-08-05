@@ -7,7 +7,7 @@ body{
 html, body {
     /*width: 91%;*/
     max-width:100%;
-    overflow-x: hidden;
+    overflow-x:hidden ;
     height: 100%
 }
 
@@ -22,7 +22,7 @@ html, body {
     box-shadow: 0 3px 6px rgba(197, 197, 197, 0.25);
 }
 
-.content {
+#content {
     z-index:0;
 
     position: relative;
@@ -37,13 +37,20 @@ html, body {
     overflow: hidden;
 
     font-family: Roboto;
+
+}
+
+#notescontainer{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .sticky {
     position: fixed;
     top: 0;
     left: 0;
-
     width: 100%;
 }
 
@@ -400,13 +407,13 @@ textarea:focus{
     color: rgb(0, 0, 0,0.87);
 }
 
-#noteDiv{
+.noteDiv{
     position: relative;
-    top: 10%;
-    left: 5%;
 
     height: 45%;
     width: 25%;
+
+    margin: 5px;
 
     background-color:rgb(255, 226, 61);
     padding: 5px 20px 5px 20px;
@@ -417,17 +424,17 @@ textarea:focus{
     transition-timing-function:ease;
 }
 
-#noteDiv:hover{
+.noteDiv:hover{
     background-color: rgb(245, 218, 63);
     box-shadow: 0 3px 6px rgb(50, 50, 50, 0.25);
 }
 
-#noteTitle{
+.noteTitle{
     font-size: 12pt;
     font-weight: 500;
 }
 
-#noteContent{
+.noteContent{
     height: 67%;
     width: 100%;
 
@@ -473,11 +480,9 @@ textarea:focus{
 
 #checklistDiv{
     position: relative;
-    top: -37%;
-    left: 37%;
-
     height: 45%;
     width: 25%;
+    margin: 5px;
 
     background-color:rgb(255, 173, 230);
     padding: 5px 20px 5px 20px;
@@ -519,7 +524,7 @@ textarea:focus{
     text-indent: -1.7em;
 }
 
-#editNote{
+.editNote{
     position: relative;
     top:-215px;
     left: 87%;
@@ -528,7 +533,7 @@ textarea:focus{
     border: 0px;
 }
 
-#editNote:hover{
+.editNote:hover{
     color: rgb(255, 136, 0);
 }
 
