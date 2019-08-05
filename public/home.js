@@ -352,7 +352,15 @@ $(document).ready(function(){
         $(noteAddTag).click(function(){
             let dropdownItem = document.createElement("div");
             $(dropdownItem).val($("#tag").val());
-            noteAddTag.append(dropdownItem);
+            dropdownItem.textContent = $("#tag").val();
+            dropdownItem.id = "dropdownItem";
+            tagContainer.append(dropdownItem);
+
+            console.log($("#tag").val());
+        })
+
+        $(note_form).click(function(){
+            $("#dropdownItem").remove();
         })
 
         noteTag = document.createElement("span");
@@ -364,6 +372,7 @@ $(document).ready(function(){
         tagContainer.append(noteTag);
         tagContainer.append(noteAddTag);
         tagContainer.className = "tagContainerN";
+
 
         let parent = $(button).parent().parent();
 

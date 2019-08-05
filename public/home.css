@@ -391,6 +391,13 @@ textarea:focus{
     border: 1px rgb(0, 0, 0) solid;
 }
 
+#dropdownItem{
+    background-color: #f1ffb1;
+    font-size: 10pt;
+    font-family: Roboto;
+
+}
+
 #savebutton{
     margin-right: 10px;
     background: transparent;
