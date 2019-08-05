@@ -86,9 +86,8 @@ $(document).ready(function(){
             });
 
             container.append(new_title);
-            container.append(new_content);
             container.append(edit_button);
-
+            container.append(new_content);
            $("#notescontainer").append(container);
         });
 
