@@ -349,6 +349,8 @@ $(document).ready(function(){
         noteAddTag.textContent = "ADD";
         noteAddTag.className = "tagButtonN";
 
+        
+
         $(noteAddTag).click(function(){
             let dropdownItem = document.createElement("div");
             $(dropdownItem).val($("#tag").val());
@@ -356,7 +358,14 @@ $(document).ready(function(){
             dropdownItem.id = "dropdownItem";
             tagContainer.append(dropdownItem);
 
-            console.log($("#tag").val());
+            $(dropdownItem).click(function(){
+                nodenewTag = document.createElement("span");
+                $(nodenewTag).val($(dropdownItem).text());
+                nodenewTag.textContent = $(dropdownItem).text();
+                nodenewTag.className = "tagN";
+                tagContainer.append(nodenewTag);
+                console.log("clicked");
+            })
         })
 
         $(note_form).click(function(){
