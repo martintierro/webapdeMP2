@@ -411,7 +411,7 @@ textarea:focus{
     position: relative;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
 
     height: 45%;
@@ -436,6 +436,7 @@ textarea:focus{
 .noteTitle{
     font-size: 12pt;
     font-weight: 500;
+    width: 75%;
 }
 
 .noteContent{
@@ -530,7 +531,7 @@ textarea:focus{
 
 .editNote{
     position: relative;
-
+    width: 20%;
     background-color:rgba(240, 230, 140, 0);
     border: 0px;
 }
