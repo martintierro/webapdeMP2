@@ -65,6 +65,16 @@ $(document).ready(function(){
     function note_input(){
         $("#newpost").empty();
 
+        let noteAddTag = document.createElement("input");
+        noteAddTag.type = "button";
+        $(noteAddTag).val("ADD");
+        noteAddTag.textContent = "ADD";
+        noteAddTag.className = "tagButtonN";
+
+        tagContainer = document.createElement("div");
+        tagContainer.append(noteAddTag);
+        tagContainer.className = "tagContainerN";
+
         content = document.createElement("textarea");
         $(content).attr("placeholder", "Enter something...");
         $(content).val($("#postinput").val());
@@ -142,6 +152,7 @@ $(document).ready(function(){
         note_form.method = "POST";
         note_form.id = "noteform";
         note_form.append(title);
+        note_form.append(tagContainer);
         note_form.append(content);
         note_form.append(footer);
 
