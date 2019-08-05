@@ -148,10 +148,14 @@ $(document).ready(function(){
 
     function loadNote(){
         $("#editpost").empty();
+        
+        let text = $("#noteContent").html();
+        let withBL = text.split('<br>').join('\n');
+
         content = document.createElement("textarea");
         $(content).attr("placeholder", "Enter something...");
-        $(content).val($("#noteContent").text());
-        content.textContent=$("#noteContent").text();
+        $(content).val(withBL);
+        content.textContent = withBL;
         content.className = "post_content";
         content.name = "note_content";
 
