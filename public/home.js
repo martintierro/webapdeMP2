@@ -348,8 +348,8 @@ $(document).ready(function(){
             console.log(parent.find(".noteTagDiv").length);
             let noteAddTag = document.createElement("input");
             noteAddTag.type = "button";
-            $(noteAddTag).val("+");
-            noteAddTag.textContent = "+";
+            $(noteAddTag).val("ADD");
+            noteAddTag.textContent = "ADD";
             noteAddTag.className = "tagButtonN";
 
             noteTag = document.createElement("span");
