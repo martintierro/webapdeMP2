@@ -4,11 +4,6 @@ const Schema = mongoose.Schema;
 
 
 //Create Schema and  Model
-const userSchema = new Schema({
-    username: String,
-    password: String
-})
-
 const checklistSchema = new Schema({
     task: String,
     status: Boolean
@@ -17,7 +12,7 @@ const checklistSchema = new Schema({
 
 const contentSchema = new Schema({
     title: String,
-    user: userSchema,
+    username: String,
     note: String,
     checklist: [checklistSchema],
     tags: [String] 
