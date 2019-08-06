@@ -454,16 +454,17 @@ textarea:focus{
 }
 
 .add{
-    float: left;
-    margin-left: 10px;
-    margin-top: 10px;
+    position: relative;
+    margin-right: 81%;
     background: transparent;
+    border: rgb(0,0,0,0.6) solid;
     border-radius: 5px;
     font-family: Roboto, sans-serif;
-    font-size: 8pt;
+    font-size: 15pt;
     color: rgb(0, 0, 0,0.6);
     font-weight:500;
-    padding: 5px;
+    padding-left: 8px;
+    padding-right:8px;
     transition-property: all;
     transition-duration: 0.5s;
     transition-timing-function:ease;

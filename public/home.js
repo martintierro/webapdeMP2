@@ -276,7 +276,7 @@ $(document).ready(function(){
 
 
         let add = document.createElement("div");
-        add.innerHTML = "ADD";
+        add.innerHTML = "+";
         add.className = "add";
         $(add).click(function() {
             item_input = document.createElement("input");
@@ -575,7 +575,7 @@ $(document).ready(function(){
         }
 
         let add = document.createElement("div");
-        add.innerHTML = "ADD";
+        add.innerHTML = "+";
         add.className = "add";
 
         $(add).click(function() {
