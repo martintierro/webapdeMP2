@@ -348,35 +348,42 @@ $(document).ready(function(){
             console.log(parent.find(".noteTagDiv").length);
             let noteAddTag = document.createElement("input");
             noteAddTag.type = "button";
-            $(noteAddTag).val("ADD");
-            noteAddTag.textContent = "ADD";
+            $(noteAddTag).val("+");
+            noteAddTag.textContent = "+";
             noteAddTag.className = "tagButtonN";
-
-            /*$(noteAddTag).click(function(){
-                let dropdownItem = document.createElement("div");
-                $(dropdownItem).val($("#tag").val());
-                dropdownItem.textContent = $("#tag").val();
-                dropdownItem.id = "dropdownItem";
-                tagContainer.append(dropdownItem);
-
-                $(dropdownItem).click(function(){
-                    nodenewTag = document.createElement("span");
-                    $(nodenewTag).val($(dropdownItem).text());
-                    nodenewTag.textContent = $(dropdownItem).text();
-                    nodenewTag.className = "tagN";
-                    tagContainer.append(nodenewTag);
-                    console.log("clicked");
-                })
-            })*/
-
-            $(note_form).click(function(){
-                $("#dropdownItem").remove();
-            })
 
             noteTag = document.createElement("span");
             $(noteTag).val($("#noteTag").text());
             noteTag.textContent = $("#noteTag").text();
             noteTag.className = "tagN";
+
+            $(noteAddTag).click(function(){
+                if($("#dropdownItem").length === 0){
+                    if(!($("#noteTag").text() == $("#tag").val())) {
+                        let dropdownItem = document.createElement("div");
+                        $(dropdownItem).val($("#tag").val());
+                        dropdownItem.textContent = $("#tag").val();
+                        dropdownItem.id = "dropdownItem";
+                        tagContainer.append(dropdownItem);
+
+                        $(dropdownItem).click(function(){
+                            console.log("clicked");
+                            nodenewTag = document.createElement("span");
+                            $(nodenewTag).val($(dropdownItem).text());
+                            nodenewTag.textContent = $(dropdownItem).text();
+                            nodenewTag.className = "tagN";
+                            tagContainer.prepend(nodenewTag);
+                            $(dropdownItem).remove();
+                        })
+                    }
+                    
+                }
+            })
+
+            $(note_form).click(function(){
+                $("#dropdownItem").remove();
+            })
+
 
             tagContainer = document.createElement("div");
             tagContainer.append(noteTag);
@@ -411,6 +418,8 @@ $(document).ready(function(){
         save.value = "SAVE";
         save.id = "savebutton";
         $(save).click(function () {
+            /*let withBL2 = $(content).html();
+            let text2 = withBL2.split('\n').join('<br>');*/
             parent.find(".noteTitle").text($(title).val());
             parent.find(".noteContent").text($(content).val());
             off_editN();
